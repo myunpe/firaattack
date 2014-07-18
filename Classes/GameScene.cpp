@@ -7,6 +7,7 @@
 //
 
 #include "GameScene.h"
+#include "Player.h"
 
 USING_NS_CC;
 
@@ -80,6 +81,10 @@ bool GameScene::init()
     
     // add the sprite as a child to this layer
     this->addChild(sprite, 0);
+    
+    mPlayer = Player::create("tileset.png");
+    mPlayer->setPosition(Vec2(100, 100));
+    this->addChild(mPlayer, 1);
     
     return true;
 }

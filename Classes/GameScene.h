@@ -11,6 +11,8 @@
 
 #include "cocos2d.h"
 
+class Player;
+
 
 class GameScene : public cocos2d::Layer
 {
@@ -26,6 +28,9 @@ public:
     
     // implement the "static create()" method manually
     CREATE_FUNC(GameScene);
+    
+private:
+    Player* mPlayer;
 };
 
 
