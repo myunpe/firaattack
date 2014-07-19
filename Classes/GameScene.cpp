@@ -8,6 +8,7 @@
 
 #include "GameScene.h"
 #include "Player.h"
+#include "Enemy.h"
 
 USING_NS_CC;
 
@@ -86,6 +87,18 @@ bool GameScene::init()
     mPlayer->setPosition(Vec2(100, 100));
     this->addChild(mPlayer, 1);
     
+    
+    Enemy* enemy = Enemy::create("enemy.png");
+    Vec2 enemyPos = Vec2();
+    enemyPos.x = rand() % (int)visibleSize.width;
+    enemyPos.y = rand() % (int)visibleSize.height;
+    enemy->setPosition(enemyPos);
+    addChild(enemy);
+    enemyList = std::list<Enemy*>();
+    enemyList.push_back(enemy);
+    
+    schedule(schedule_selector(GameScene::onCollisionCheck));
+    
     return true;
 }
 
@@ -101,6 +114,31 @@ void GameScene::menuCloseCallback(Ref* pSender)
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
     exit(0);
 #endif
+}
+
+void GameScene::onCollisionCheck(float detla){
+    
+    std::vector<int> removeList = std::vector<int>();
+    
+
+    for (auto it = enemyList.begin(); it != enemyList.end(); ++it) {
+        if((*it)->onCollideWithPlayer(mPlayer)){
+            (*it)->removeFromParentAndCleanup(true);
+            enemyList.erase(it);
+            break;
+        }
+    }
+    
+    
+    if (enemyList.empty()) {
+        unschedule(schedule_selector(GameScene::onCollisionCheck));
+    }
+    
+//    for (int j = (int)removeList.size(); j > 0; j--) {
+//        enemyList.at(removeList.at(j))->removeFromParentAndCleanup(true);
+//        enemyList.erase(enemyList.begin() + removeList.at(j));
+//    }
+ 
 }
 
 

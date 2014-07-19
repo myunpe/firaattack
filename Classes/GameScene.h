@@ -10,9 +10,11 @@
 #define __Tetris__GameScene__
 
 #include "cocos2d.h"
+#include "vector"
+#include "list"
 
 class Player;
-
+class Enemy;
 
 class GameScene : public cocos2d::Layer
 {
@@ -26,11 +28,16 @@ public:
     // a selector callback
     void menuCloseCallback(cocos2d::Ref* pSender);
     
+    //当たり判定チェック用
+    void onCollisionCheck(float detla);
+    
     // implement the "static create()" method manually
     CREATE_FUNC(GameScene);
     
 private:
     Player* mPlayer;
+    std::list<Enemy*> enemyList;
+
 };
 
 

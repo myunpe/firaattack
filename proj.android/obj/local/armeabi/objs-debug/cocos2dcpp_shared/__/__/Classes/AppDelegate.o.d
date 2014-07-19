@@ -314,7 +314,7 @@
   /Users/mitsunobu/git/Tetris/proj.android/../cocos2d/cocos/./deprecated/CCBool.h \
   /Users/mitsunobu/git/Tetris/proj.android/../cocos2d/cocos/./deprecated/CCNotificationCenter.h \
   /Users/mitsunobu/git/Tetris/proj.android/../cocos2d/cocos/./deprecated/CCDeprecated.h \
-  jni/../../Classes/HelloWorldScene.h
+  jni/../../Classes/GameScene.h
 
 jni/../../Classes/AppDelegate.h:
 
@@ -946,4 +946,4 @@ jni/../../Classes/AppDelegate.h:
 
 /Users/mitsunobu/git/Tetris/proj.android/../cocos2d/cocos/./deprecated/CCDeprecated.h:
 
-jni/../../Classes/HelloWorldScene.h:
+jni/../../Classes/GameScene.h:
