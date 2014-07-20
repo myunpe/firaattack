@@ -88,7 +88,7 @@ void Player::move(float delta){
     Vec2 temp = beginTouch * delta * power + getPosition();
 //    log("Player Move + delta %f, x = %f, y = %f, power = %f",delta, temp.x, temp.y, power);
     
-    log("setPosition power = %f, x, y = %f, %f",power, temp.x, temp.y);
+//    log("setPosition power = %f, x, y = %f, %f",power, temp.x, temp.y);
     this->setPosition(temp);
    
     Size winSize = Director::getInstance()->getWinSize();

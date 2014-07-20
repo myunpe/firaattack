@@ -40,6 +40,9 @@ bool GameScene::init()
         return false;
     }
     
+    //変数初期化
+    gameScore = 0;
+    
     Size visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
     
@@ -123,6 +126,8 @@ void GameScene::menuCloseCallback(Ref* pSender)
 void GameScene::onCollisionCheck(float detla){
     for (auto it = enemyList.begin(); it != enemyList.end(); ++it) {
         if((*it)->onCollideWithPlayer(mPlayer)){
+            //当たった時の処理を行いたい
+            addScore();
             (*it)->removeFromParentAndCleanup(true);
             it = enemyList.erase(it);
         }
@@ -144,5 +149,7 @@ void GameScene::readGameData(){
     
 }
 
-
-
+void GameScene::addScore(){
+    gameScore++;
+    log("addScore gameScore = %d", gameScore);
+}

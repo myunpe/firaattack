@@ -38,11 +38,15 @@ private:
     //当たり判定チェック用
     void onCollisionCheck(float detla);
     
+    //点数追加
+    void addScore();
+    
 private:
     Player* mPlayer;
     std::list<Enemy*> enemyList;
 
     int enemyNum;
+    int gameScore;
 };
 
 
