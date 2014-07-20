@@ -30,6 +30,9 @@ public:
     //Playerを生成するようのメソッド
     static Player* create(const std::string &filename);
     
+public:
+    std::function<void()> onMoveEnd;
+    
 private:
     Vec2 beginTouch;
     float power;

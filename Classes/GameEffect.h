@@ -30,13 +30,18 @@ public:
     
     Rect getRect();
     void move(float delta);
+    void setDispatchTouch(bool isEnable);
     
     //Playerを生成するようのメソッド
     static GameEffect* create(const std::string &filename);
     
+
+    
 private:
     Vec2 beginTouch;
     float power;
+    
+    bool isDispatch;
 };
 
 #endif /* defined(__Tetris__GameEffect__) */

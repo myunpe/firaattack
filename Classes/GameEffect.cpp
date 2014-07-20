@@ -37,6 +37,7 @@ GameEffect* GameEffect::create(const std::string &filename){
     gameEffect->setContentSize(Director::getInstance()->getWinSize());
     gameEffect->setPosition(Vec2(0,0));
     gameEffect->setAnchorPoint(Vec2(0.0f, 0.0f));
+    gameEffect->setVisible(false);
     
     return gameEffect;
 }
@@ -45,18 +46,22 @@ void GameEffect::onEnter(){
     log("GameEffect::onEnter");
     Sprite::onEnter();
     
-//    auto touchListener = EventListenerTouchOneByOne::create();
-//    touchListener->setSwallowTouches(true);
-//    
-//    touchListener->onTouchBegan = CC_CALLBACK_2(GameEffect::onTouchBegan, this);
-//    touchListener->onTouchMoved = CC_CALLBACK_2(GameEffect::onTouchMoved, this);
-//    touchListener->onTouchEnded = CC_CALLBACK_2(GameEffect::onTouchEnded, this);
-//    
-//    _eventDispatcher->addEventListenerWithSceneGraphPriority(touchListener, this);
+    auto touchListener = EventListenerTouchOneByOne::create();
+    touchListener->setSwallowTouches(true);
+    
+    touchListener->onTouchBegan = CC_CALLBACK_2(GameEffect::onTouchBegan, this);
+    touchListener->onTouchMoved = CC_CALLBACK_2(GameEffect::onTouchMoved, this);
+    touchListener->onTouchEnded = CC_CALLBACK_2(GameEffect::onTouchEnded, this);
+    
+    _eventDispatcher->addEventListenerWithSceneGraphPriority(touchListener, this);
 }
 
 void GameEffect::onExit(){
     Sprite::onExit();
+}
+
+void GameEffect::setDispatchTouch(bool isEnable){
+    isDispatch = isEnable;
 }
 
 
@@ -65,10 +70,13 @@ bool GameEffect::onTouchBegan(Touch* touch, Event* event){
 //    unschedule(schedule_selector(Player::move));
 //    beginTouch = touch->getLocation();
     //    thistouch->getLocation();
-    return true;
+    
+    bool is = isDispatch;
+    log("is? = %d", is);
+    return is;
 }
 void GameEffect::onTouchMoved(Touch* touch, Event* event){
-    log("player onTouchMoved");
+    log("GameEffect onTouchMoved");
 }
 void GameEffect::onTouchEnded(Touch* touch, Event* event){
 //    Vec2 endTouch = touch->getLocation();

@@ -81,6 +81,9 @@ void Player::move(float delta){
     
     power -= 5.0f;
     if (power <= 0.0f) {
+        if (onMoveEnd) {
+            onMoveEnd();
+        }
         log("getPosition = x, y = %f, %f", getPosition().x, getPosition().y);
         _eventDispatcher->setEnabled(true);
         unschedule(schedule_selector(Player::move));

@@ -57,8 +57,8 @@ bool GameScene::init()
                                            "CloseSelected.png",
                                            CC_CALLBACK_1(GameScene::menuCloseCallback, this));
     
-	closeItem->setPosition(Vec2(origin.x + visibleSize.width - closeItem->getContentSize().width/2 ,
-                                origin.y + closeItem->getContentSize().height/2));
+	closeItem->setPosition(Vec2(closeItem->getContentSize().width/2 ,
+                                closeItem->getContentSize().height/2));
     
     // create menu, it's an autorelease object
     auto menu = Menu::create(closeItem, NULL);
@@ -91,6 +91,9 @@ bool GameScene::init()
     
     mPlayer = Player::create("tileset.png");
     mPlayer->setPosition(Vec2(100, 100));
+    mPlayer->onMoveEnd = []{
+        log("onMoveEnd");
+    };
     this->addChild(mPlayer, 1);
     readGameData();
     
@@ -105,13 +108,24 @@ bool GameScene::init()
         addChild(enemy);
         enemyList.push_back(enemy);
     }
-    
     schedule(schedule_selector(GameScene::onCollisionCheck));
     
-    
     GameEffect* gameEffect = GameEffect::create("");
+    gameEffect->setDispatchTouch(false);
     //一番上に来るようにindexOrderを上げる
-    addChild(gameEffect, 100);
+    addChild(gameEffect, 1000);
+    
+    auto userNotifyText = LabelTTF::create("フリックでプレイヤーを飛ばしてね！", "Arial", 24);
+    userNotifyText->setPosition(visibleSize.width - (userNotifyText->getContentSize().width / 2), userNotifyText->getContentSize().height / 2);
+    
+    auto action2 = FadeOut::create(1.0f);
+    auto action2Back = action2->reverse();
+    auto action2BackReverse = action2Back->reverse();
+    auto action2BackReverseReverse = action2BackReverse->reverse();
+    auto actionForever = RepeatForever::create(Sequence::create( action2, action2Back,action2BackReverse,action2BackReverseReverse, nullptr));
+    userNotifyText->runAction(actionForever);
+    
+    this->addChild(userNotifyText, 3, 100);
     
     return true;
 }
