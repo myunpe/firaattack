@@ -9,6 +9,7 @@
 #include "GameScene.h"
 #include "Player.h"
 #include "Enemy.h"
+#include "GameEffect.h"
 
 #include "library/json11.hpp"
 
@@ -93,6 +94,7 @@ bool GameScene::init()
     this->addChild(mPlayer, 1);
     readGameData();
     
+    
     enemyList = std::list<Enemy*>();
     for (int i = 0; i < enemyNum; i++) {
         Enemy* enemy = Enemy::create("enemy.png");
@@ -105,6 +107,11 @@ bool GameScene::init()
     }
     
     schedule(schedule_selector(GameScene::onCollisionCheck));
+    
+    
+    GameEffect* gameEffect = GameEffect::create("");
+    //一番上に来るようにindexOrderを上げる
+    addChild(gameEffect, 100);
     
     return true;
 }
