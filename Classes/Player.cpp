@@ -8,6 +8,8 @@
 
 #include "Player.h"
 
+static const char fire[] = "fire.png";
+
 Player::Player() : Sprite(){
     
 }
@@ -20,6 +22,13 @@ Player* Player::create(const std::string &filename){
     Player* player = new Player();
     player->initWithFile(filename);
     player->autorelease();
+    auto particle = ParticleFire::createWithTotalParticles(20);
+    particle->retain();
+    player->addChild(particle, 10);
+    
+    particle->setTexture( Director::getInstance()->getTextureCache()->addImage(fire) );//.pvr");
+    particle->setPosition(Vec2(-player->getRect().getMidX(),0));
+
     return player;
 }
 
@@ -35,6 +44,7 @@ void Player::onEnter(){
     touchListener->onTouchEnded = CC_CALLBACK_2(Player::onTouchEnded, this);
     
     _eventDispatcher->addEventListenerWithSceneGraphPriority(touchListener, this);
+
 }
 
 void Player::onExit(){
@@ -63,6 +73,7 @@ void Player::onTouchEnded(Touch* touch, Event* event){
     power = 1000.0f;
     log("player onTouchEnded len = %f", power);
     beginTouch.normalize();
+    _eventDispatcher->setEnabled(false);
 }
 
 
@@ -71,6 +82,7 @@ void Player::move(float delta){
     power -= 5.0f;
     if (power <= 0.0f) {
         log("getPosition = x, y = %f, %f", getPosition().x, getPosition().y);
+        _eventDispatcher->setEnabled(true);
         unschedule(schedule_selector(Player::move));
     }
     Vec2 temp = beginTouch * delta * power + getPosition();
