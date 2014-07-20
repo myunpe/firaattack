@@ -39,32 +39,13 @@ bool Enemy::onCollideWithPlayer(Player* player)
     playerRect.origin.x += player->getPosition().x;
     playerRect.origin.y += player->getPosition().y;
     
-    float lowY  = playerRect.getMinY();
-    float midY  = playerRect.getMidY();
-    float highY = playerRect.getMaxY();
+    Rect rect = Rect(0, 0, getContentSize().width, getContentSize().height);
+    rect.origin.x += getPosition().x;
+    rect.origin.y += getPosition().y;
     
-    float leftX  = playerRect.getMinX();
-    float rightX = playerRect.getMaxX();
-    
-    if (getPosition().x > leftX && getPosition().x < rightX) {
-        
-        bool hit = false;
-        
-        if (getPosition().y > midY && getPosition().y <= highY)
-        {
-            setPosition( Vec2(getPosition().x, highY));
-            hit = true;
-        }
-        else if (getPosition().y < midY && getPosition().y >= lowY)
-        {
-            setPosition( Vec2(getPosition().x, lowY));
-            hit = true;
-        }
-        
-        if (hit)
-        {
-            return true;
-        }
+    if(rect.intersectsRect(playerRect)){
+        return true;
     }
+    
     return false;
 } 

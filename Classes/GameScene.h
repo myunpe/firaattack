@@ -28,16 +28,21 @@ public:
     // a selector callback
     void menuCloseCallback(cocos2d::Ref* pSender);
     
-    //当たり判定チェック用
-    void onCollisionCheck(float detla);
-    
     // implement the "static create()" method manually
     CREATE_FUNC(GameScene);
+    
+private:
+    //Jsonからゲームデータを読み込む
+    void readGameData();
+    
+    //当たり判定チェック用
+    void onCollisionCheck(float detla);
     
 private:
     Player* mPlayer;
     std::list<Enemy*> enemyList;
 
+    int enemyNum;
 };
 
 

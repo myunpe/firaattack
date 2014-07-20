@@ -57,19 +57,16 @@ void Player::onTouchEnded(Touch* touch, Event* event){
     endTouch.subtract(beginTouch);
     beginTouch = endTouch;
     power = beginTouch.length();
-//    if (power > 1000.0f) {
-//        power = 1000.0f;
-//    }else if(power < 1000.0f){
-//        power = 400.0f;
-//    }
+    if (power > 100.0f) {
+        schedule(schedule_selector(Player::move));
+    }
     power = 1000.0f;
     log("player onTouchEnded len = %f", power);
     beginTouch.normalize();
-    schedule(schedule_selector(Player::move));
 }
 
-void Player::move(float delta){
 
+void Player::move(float delta){
     
     power -= 5.0f;
     if (power <= 0.0f) {
@@ -86,8 +83,14 @@ void Player::move(float delta){
     Rect r = getRect();
     r.origin.x += getPosition().x;
     r.origin.y += getPosition().y;
-    if (0.0f > r.getMinX() || r.getMaxX() >= winSize.width) {
+    if (0.0f > r.getMinX()){
+        float len = - r.getMinX();
         beginTouch.x = -beginTouch.x;
+        setPosition(getPosition().x + len , getPosition().y);
+    }else if(r.getMaxX() >= winSize.width) {
+        float len =  -(r.getMaxX() - winSize.width);
+        beginTouch.x = -beginTouch.x;
+        setPosition(getPosition().x + len , getPosition().y);
     }
     if (0.0f > r.getMinY() || r.getMaxY() >= winSize.height) {
         beginTouch.y = -beginTouch.y;

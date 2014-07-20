@@ -10,6 +10,8 @@
 #include "Player.h"
 #include "Enemy.h"
 
+#include "library/json11.hpp"
+
 USING_NS_CC;
 
 Scene* GameScene::createScene()
@@ -86,16 +88,18 @@ bool GameScene::init()
     mPlayer = Player::create("tileset.png");
     mPlayer->setPosition(Vec2(100, 100));
     this->addChild(mPlayer, 1);
+    readGameData();
     
-    
-    Enemy* enemy = Enemy::create("enemy.png");
-    Vec2 enemyPos = Vec2();
-    enemyPos.x = rand() % (int)visibleSize.width;
-    enemyPos.y = rand() % (int)visibleSize.height;
-    enemy->setPosition(enemyPos);
-    addChild(enemy);
     enemyList = std::list<Enemy*>();
-    enemyList.push_back(enemy);
+    for (int i = 0; i < enemyNum; i++) {
+        Enemy* enemy = Enemy::create("enemy.png");
+        Vec2 enemyPos = Vec2();
+        enemyPos.x = rand() % (int)visibleSize.width;
+        enemyPos.y = rand() % (int)visibleSize.height;
+        enemy->setPosition(enemyPos);
+        addChild(enemy);
+        enemyList.push_back(enemy);
+    }
     
     schedule(schedule_selector(GameScene::onCollisionCheck));
     
@@ -117,28 +121,27 @@ void GameScene::menuCloseCallback(Ref* pSender)
 }
 
 void GameScene::onCollisionCheck(float detla){
-    
-    std::vector<int> removeList = std::vector<int>();
-    
-
     for (auto it = enemyList.begin(); it != enemyList.end(); ++it) {
         if((*it)->onCollideWithPlayer(mPlayer)){
             (*it)->removeFromParentAndCleanup(true);
-            enemyList.erase(it);
-            break;
+            it = enemyList.erase(it);
         }
     }
-    
-    
+
     if (enemyList.empty()) {
         unschedule(schedule_selector(GameScene::onCollisionCheck));
     }
+}
+
+void GameScene::readGameData(){
+    auto jsonStringFile = FileUtils::getInstance()->getStringFromFile("data.json");
+    std::string err;
+    auto json = json11::Json::parse(jsonStringFile, err);
+    auto scene = json["scene"];
+    log("jsonName = %s", scene["name"].string_value().c_str());
+    enemyNum = scene["enemy"].int_value();
+    log("enemyNum = %d", enemyNum);
     
-//    for (int j = (int)removeList.size(); j > 0; j--) {
-//        enemyList.at(removeList.at(j))->removeFromParentAndCleanup(true);
-//        enemyList.erase(enemyList.begin() + removeList.at(j));
-//    }
- 
 }
 
 
