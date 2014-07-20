@@ -10,6 +10,7 @@
 #include "Player.h"
 #include "Enemy.h"
 #include "GameEffect.h"
+#include "GameClear.h"
 
 #include "library/json11.hpp"
 
@@ -65,30 +66,6 @@ bool GameScene::init()
     menu->setPosition(Vec2::ZERO);
     this->addChild(menu, 1);
     
-    /////////////////////////////
-    // 3. add your codes below...
-    
-    // add a label shows "Hello World"
-    // create and initialize a label
-    
-    auto label = LabelTTF::create("Hello World", "Arial", 24);
-    
-    // position the label on the center of the screen
-    label->setPosition(Vec2(origin.x + visibleSize.width/2,
-                            origin.y + visibleSize.height - label->getContentSize().height));
-    
-    // add the label as a child to this layer
-    this->addChild(label, 1);
-    
-    // add "HelloWorld" splash screen"
-    auto sprite = Sprite::create("HelloWorld.png");
-    
-    // position the sprite on the center of the screen
-    sprite->setPosition(Vec2(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y));
-    
-    // add the sprite as a child to this layer
-    this->addChild(sprite, 0);
-    
     mPlayer = Player::create("tileset.png");
     mPlayer->setPosition(Vec2(100, 100));
     mPlayer->onMoveEnd = []{
@@ -132,16 +109,17 @@ bool GameScene::init()
 
 void GameScene::menuCloseCallback(Ref* pSender)
 {
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_WP8) || (CC_TARGET_PLATFORM == CC_PLATFORM_WINRT)
-	MessageBox("You pressed the close button. Windows Store Apps do not implement a close button.","Alert");
-    return;
-#endif
+//#if (CC_TARGET_PLATFORM == CC_PLATFORM_WP8) || (CC_TARGET_PLATFORM == CC_PLATFORM_WINRT)
+//	MessageBox("You pressed the close button. Windows Store Apps do not implement a close button.","Alert");
+//    return;
+//#endif
+//    
+//    Director::getInstance()->end();
+//    
+//#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+//    exit(0);
+//#endif
     
-    Director::getInstance()->end();
-    
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-    exit(0);
-#endif
 }
 
 void GameScene::onCollisionCheck(float detla){
@@ -155,6 +133,7 @@ void GameScene::onCollisionCheck(float detla){
     }
 
     if (enemyList.empty()) {
+        Director::getInstance()->replaceScene(TransitionFade::create(1.0f, GameClear::createScene(), Color3B::BLACK));
         unschedule(schedule_selector(GameScene::onCollisionCheck));
     }
 }

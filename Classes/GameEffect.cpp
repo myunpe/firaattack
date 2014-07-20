@@ -8,17 +8,6 @@
 
 #include "GameEffect.h"
 
-
-//
-//  Player.cpp
-//  Tetris
-//
-//  Created by Yoshida Mitsunobu on 2014/07/18.
-//
-//
-
-#include "Player.h"
-
 GameEffect::GameEffect() : Sprite(){
     
 }

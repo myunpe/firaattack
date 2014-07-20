@@ -16,6 +16,7 @@ LOCAL_SRC_FILES := hellocpp/main.cpp \
                    ../../Classes/Player.cpp \
                    ../../Classes/Enemy.cpp \
                    ../../Classes/GameEffect.cpp \
+                   ../../Classes/GameClear.cpp \
                    ../../Classes/library/json11.cpp 
 
 LOCAL_C_INCLUDES := $(LOCAL_PATH)/../../Classes
