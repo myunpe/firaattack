@@ -46,6 +46,10 @@ bool GameClear::init()
     bg->setAnchorPoint(Vec2(0.0f, 0.0f));
     addChild(bg, -1);
     
+    Label* label = Label::createWithSystemFont("GameClear", "", 30.0f);
+    label->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2));
+    addChild(label);
+    
 
     
     return true;
