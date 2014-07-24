@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<UIProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ProjectDir>Z:\gitrepo\fireattack\CocoStudio\GameScene</ProjectDir>
+  <Version>1.5.0.1</Version>
+  <Resources>Z:\gitrepo\fireattack\CocoStudio\GameScene\Resources</Resources>
+  <Name>GameScene</Name>
+  <JsonFileName>GameScene.json</JsonFileName>
+  <JsonFolder>Z:\gitrepo\fireattack\CocoStudio\GameScene\Json</JsonFolder>
+  <JsonList>
+    <string>GameScene.json</string>
+  </JsonList>
+  <CanvasSize>
+    <Width>0</Width>
+    <Height>0</Height>
+  </CanvasSize>
+  <filePath>Z:\gitrepo\fireattack\CocoStudio\GameScene\GameScene.xml.ui</filePath>
+  <ProjectType>UIProject</ProjectType>
+  <ResRelativePath />
+  <imageFileList />
+  <imagePngList />
+  <JsonSuffix>.json</JsonSuffix>
+  <CurrentUIJson>GameScene.json</CurrentUIJson>
+</UIProject>
