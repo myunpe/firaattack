@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<GameProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ProjectDir>Z:\gitrepo\fireattack\CocoStudio\Scene\FireAttack</ProjectDir>
+  <Version>1.5.0.1</Version>
+  <Resources>Z:\gitrepo\fireattack\CocoStudio\Scene\FireAttack</Resources>
+  <Name>FireAttack</Name>
+  <JsonFileName>FireAttack.json</JsonFileName>
+  <JsonList />
+  <CanvasSize>
+    <Width>480</Width>
+    <Height>320</Height>
+  </CanvasSize>
+  <filePath>Z:\gitrepo\fireattack\CocoStudio\Scene\FireAttack\FireAttack.xml.ccsproj</filePath>
+  <ProjectType>GameProject</ProjectType>
+  <ResRelativePath />
+  <ResProjFolder>Z:\gitrepo\fireattack\CocoStudio\Scene\FireAttack\CocosStudio\ccsprojs</ResProjFolder>
+  <AssetsDir>Z:\gitrepo\fireattack\CocoStudio\Scene\FireAttack\CocosStudio\assets</AssetsDir>
+  <LanaguageType>cpp</LanaguageType>
+</GameProject>

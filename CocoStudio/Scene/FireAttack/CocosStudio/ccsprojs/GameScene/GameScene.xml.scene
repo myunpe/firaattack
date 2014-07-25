@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<SceneProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ProjectDir>Z:\gitrepo\fireattack\CocoStudio\Scene\FireAttack\CocosStudio\ccsprojs\GameScene</ProjectDir>
+  <Version>1.5.0.1</Version>
+  <Resources>Z:\gitrepo\fireattack\CocoStudio\Scene\FireAttack</Resources>
+  <Name>GameScene</Name>
+  <JsonFileName>GameScene.json</JsonFileName>
+  <JsonFolder>Z:\gitrepo\fireattack\CocoStudio\Scene\FireAttack\CocosStudio\assets\publish</JsonFolder>
+  <JsonList />
+  <CanvasSize>
+    <Width>640</Width>
+    <Height>960</Height>
+  </CanvasSize>
+  <filePath>Z:\gitrepo\fireattack\CocoStudio\Scene\FireAttack\CocosStudio\ccsprojs\GameScene\GameScene.xml.scene</filePath>
+  <ProjectType>SceneProject</ProjectType>
+  <ResRelativePath>\\..\\..\\assets</ResRelativePath>
+  <JSFileList />
+  <DefaultUI_JSList />
+  <Res>Z:\gitrepo\fireattack\CocoStudio\Scene\FireAttack\CocosStudio\assets</Res>
+</SceneProject>
