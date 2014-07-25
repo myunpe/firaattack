@@ -82,6 +82,8 @@
 		8C67A5EC197BAF8B0093F618 /* GameClear.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8C67A5E9197BAF8B0093F618 /* GameClear.cpp */; };
 		8C67A5F11982AFE40093F618 /* GameScene.ExportJson in Resources */ = {isa = PBXBuildFile; fileRef = 8C67A5F01982AFE40093F618 /* GameScene.ExportJson */; };
 		8C67A5F21982AFE40093F618 /* GameScene.ExportJson in Resources */ = {isa = PBXBuildFile; fileRef = 8C67A5F01982AFE40093F618 /* GameScene.ExportJson */; };
+		8C67A5F51982B6A10093F618 /* TitleScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8C67A5F31982B6A10093F618 /* TitleScene.cpp */; };
+		8C67A5F61982B6A10093F618 /* TitleScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8C67A5F31982B6A10093F618 /* TitleScene.cpp */; };
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
 		BF1712471292920000B8313A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB412928DE900B8313A /* libz.dylib */; };
 		BF1C47F01293687400B63C5D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF1C47EA1293683800B63C5D /* QuartzCore.framework */; };
@@ -294,6 +296,8 @@
 		8C67A5E9197BAF8B0093F618 /* GameClear.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GameClear.cpp; path = ../Classes/GameClear.cpp; sourceTree = "<group>"; };
 		8C67A5EA197BAF8B0093F618 /* GameClear.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameClear.h; path = ../Classes/GameClear.h; sourceTree = "<group>"; };
 		8C67A5F01982AFE40093F618 /* GameScene.ExportJson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = GameScene.ExportJson; sourceTree = "<group>"; };
+		8C67A5F31982B6A10093F618 /* TitleScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TitleScene.cpp; path = ../Classes/TitleScene.cpp; sourceTree = "<group>"; };
+		8C67A5F41982B6A10093F618 /* TitleScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TitleScene.h; path = ../Classes/TitleScene.h; sourceTree = "<group>"; };
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB412928DE900B8313A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		BF1C47EA1293683800B63C5D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -382,6 +386,8 @@
 				8C67A5E5197B8F570093F618 /* GameEffect.h */,
 				8C67A5E9197BAF8B0093F618 /* GameClear.cpp */,
 				8C67A5EA197BAF8B0093F618 /* GameClear.h */,
+				8C67A5F31982B6A10093F618 /* TitleScene.cpp */,
+				8C67A5F41982B6A10093F618 /* TitleScene.h */,
 			);
 			name = Classes;
 			path = ../classes;
@@ -738,6 +744,7 @@
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				8C67A5C819796C550093F618 /* Player.cpp in Sources */,
 				8C67A5D4197A31240093F618 /* Enemy.cpp in Sources */,
+				8C67A5F51982B6A10093F618 /* TitleScene.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				1AFAF8B716D35DE700DB1158 /* AppDelegate.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
@@ -758,6 +765,7 @@
 				8C67A5E7197B8F570093F618 /* GameEffect.cpp in Sources */,
 				8C67A5C919796C550093F618 /* Player.cpp in Sources */,
 				8C67A5EC197BAF8B0093F618 /* GameClear.cpp in Sources */,
+				8C67A5F61982B6A10093F618 /* TitleScene.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
