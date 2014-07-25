@@ -11,7 +11,7 @@
 
 #include "cocos2d.h"
 
-class GameClear : public cocos2d::Layer
+class TitleScene : public cocos2d::Layer
 {
 public:
     // there's no 'id' in cpp, so we recommend returning the class instance pointer
@@ -21,7 +21,7 @@ public:
     virtual bool init();
     
     // implement the "static create()" method manually
-    CREATE_FUNC(GameClear);
+    CREATE_FUNC(TitleScene);
     
 private:
     

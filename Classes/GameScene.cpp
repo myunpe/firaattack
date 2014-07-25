@@ -12,8 +12,15 @@
 #include "GameEffect.h"
 #include "GameClear.h"
 #include "json/document.h"
+#include "cocostudio/CCSGUIReader.h"
+#include "ui/CocosGUI.h"
+
+
 
 USING_NS_CC;
+using namespace cocostudio;
+using namespace cocos2d::ui;
+
 
 Scene* GameScene::createScene()
 {
@@ -102,6 +109,13 @@ bool GameScene::init()
     userNotifyText->runAction(actionForever);
     
     this->addChild(userNotifyText, 3, 100);
+    
+    GUIReader* guiReader = GUIReader::getInstance();
+    
+    Layout* layout = static_cast<Layout*>(guiReader->widgetFromJsonFile("GameScene/GameScene.ExportJson"));
+    layout->setScale(0.5);
+    addChild(layout);
+
     
     return true;
 }

@@ -16,7 +16,7 @@ Scene* TitleScene::createScene()
     auto scene = Scene::create();
     
     // 'layer' is an autorelease object
-    auto layer = GameClear::create();
+    auto layer = TitleScene::create();
     
     // add layer as a child to scene
     scene->addChild(layer);
@@ -45,7 +45,7 @@ bool TitleScene::init()
     bg->setAnchorPoint(Vec2(0.0f, 0.0f));
     addChild(bg, -1);
     
-    Label* label = Label::createWithSystemFont("GameClear", "", 30.0f);
+    Label* label = Label::createWithSystemFont("TitleScene", "", 30.0f);
     label->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2));
     addChild(label);
     
