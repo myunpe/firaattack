@@ -12,8 +12,6 @@
 #include "GameEffect.h"
 #include "GameClear.h"
 
-#include "library/json11.hpp"
-
 USING_NS_CC;
 
 Scene* GameScene::createScene()
@@ -139,13 +137,13 @@ void GameScene::onCollisionCheck(float detla){
 }
 
 void GameScene::readGameData(){
-    auto jsonStringFile = FileUtils::getInstance()->getStringFromFile("data.json");
-    std::string err;
-    auto json = json11::Json::parse(jsonStringFile, err);
-    auto scene = json["scene"];
-    log("jsonName = %s", scene["name"].string_value().c_str());
-    enemyNum = scene["enemy"].int_value();
-    log("enemyNum = %d", enemyNum);
+//    auto jsonStringFile = FileUtils::getInstance()->getStringFromFile("data.json");
+//    std::string err;
+//    auto json = json11::Json::parse(jsonStringFile, err);
+//    auto scene = json["scene"];
+//    log("jsonName = %s", scene["name"].string_value().c_str());
+//    enemyNum = scene["enemy"].int_value();
+//    log("enemyNum = %d", enemyNum);
     
 }
 
