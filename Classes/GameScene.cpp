@@ -11,8 +11,7 @@
 #include "Enemy.h"
 #include "GameEffect.h"
 #include "GameClear.h"
-
-#include "library/json11.hpp"
+#include "json/document.h"
 
 USING_NS_CC;
 
@@ -139,13 +138,21 @@ void GameScene::onCollisionCheck(float detla){
 }
 
 void GameScene::readGameData(){
-    auto jsonStringFile = FileUtils::getInstance()->getStringFromFile("data.json");
-    std::string err;
-    auto json = json11::Json::parse(jsonStringFile, err);
-    auto scene = json["scene"];
-    log("jsonName = %s", scene["name"].string_value().c_str());
-    enemyNum = scene["enemy"].int_value();
-    log("enemyNum = %d", enemyNum);
+    //rapidjsonに書き換え
+    auto data = FileUtils::getInstance()->getStringFromFile("data.json");
+    rapidjson::Document doc;
+    doc.Parse<rapidjson::kParseDefaultFlags>(data.c_str());
+    rapidjson::Value &val = doc["scene"];
+    log( "name = %s, enemy = %d", val["name"].GetString(), val["enemy"].GetInt());
+    enemyNum = val["enemy"].GetInt();
+    
+//    auto jsonStringFile = FileUtils::getInstance()->getStringFromFile("data.json");
+//    std::string err;
+//    auto json = json11::Json::parse(jsonStringFile, err);
+//    auto scene = json["scene"];
+//    log("jsonName = %s", scene["name"].string_value().c_str());
+//    enemyNum = scene["enemy"].int_value();
+//    log("enemyNum = %d", enemyNum);
     
 }
 
