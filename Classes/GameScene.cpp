@@ -14,6 +14,7 @@
 #include "json/document.h"
 #include "cocostudio/CCSGUIReader.h"
 #include "ui/CocosGUI.h"
+#include "cocostudio/CocoStudio.h"
 
 
 
@@ -110,14 +111,17 @@ bool GameScene::init()
     
     this->addChild(userNotifyText, 3, 100);
     
-    GUIReader* guiReader = GUIReader::getInstance();
     
-    Layout* layout = static_cast<Layout*>(guiReader->widgetFromJsonFile("GameScene/GameScene.ExportJson"));
-    layout->setScale(0.5);
-    addChild(layout);
-
+    //UIの読み方
+    GUIReader* guiReader = GUIReader::getInstance();
+    uiLayout = static_cast<Layout*>(guiReader->widgetFromJsonFile("UIGame.ExportJson"));
+    addChild(uiLayout);
     
     return true;
+}
+
+void GameScene::onEnter(){
+    Layer::onEnter();
 }
 
 void GameScene::menuCloseCallback(Ref* pSender)
@@ -173,4 +177,10 @@ void GameScene::readGameData(){
 void GameScene::addScore(){
     gameScore++;
     log("addScore gameScore = %d", gameScore);
+
+    Text* back_label = dynamic_cast<Text*>(uiLayout->getChildByName("Score"));
+    std::string text = std::string("score : %d", gameScore);
+    log("score = %s", text.c_str());
+    back_label->setString(text);
+
 }
