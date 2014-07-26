@@ -99,7 +99,7 @@ bool GameScene::init()
     //一番上に来るようにindexOrderを上げる
     addChild(gameEffect, 1000);
     
-    auto userNotifyText = LabelTTF::create("フリックでプレイヤーを飛ばしてね！", "Arial", 24);
+    auto userNotifyText = LabelTTF::create("フリックして", "Arial", 24);
     userNotifyText->setPosition(visibleSize.width - (userNotifyText->getContentSize().width / 2), userNotifyText->getContentSize().height / 2);
     
     auto action2 = FadeOut::create(1.0f);
