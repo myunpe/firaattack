@@ -20,7 +20,8 @@ Player::~Player(){
 
 Player* Player::create(const std::string &filename){
     Player* player = new Player();
-    player->initWithFile(filename);
+	player->initWithTexture(Director::getInstance()->getTextureCache()->addImage(filename));
+    //player->initWithFile(filename);
     player->autorelease();
     auto particle = ParticleFire::createWithTotalParticles(20);
     particle->retain();

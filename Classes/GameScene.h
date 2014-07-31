@@ -10,8 +10,8 @@
 #define __Tetris__GameScene__
 
 #include "cocos2d.h"
-#include "vector"
-#include "list"
+#include <vector>
+#include <list>
 #include "ui/CocosGUI.h"
 
 class Player;
