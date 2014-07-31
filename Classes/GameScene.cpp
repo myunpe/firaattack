@@ -140,13 +140,15 @@ void GameScene::menuCloseCallback(Ref* pSender)
 }
 
 void GameScene::onCollisionCheck(float detla){
-    for (auto it = enemyList.begin(); it != enemyList.end(); ++it) {
+    for (auto it = enemyList.begin(); it != enemyList.end();) {
         if((*it)->onCollideWithPlayer(mPlayer)){
             //当たった時の処理を行いたい
             addScore();
-            (*it)->removeFromParentAndCleanup(true);
+			(*it)->removeFromParentAndCleanup(true);
             it = enemyList.erase(it);
+			continue;
         }
+		++it;
     }
 
     if (enemyList.empty()) {
@@ -176,11 +178,12 @@ void GameScene::readGameData(){
 
 void GameScene::addScore(){
     gameScore++;
-    log("addScore gameScore = %d", gameScore);
-
+    log("addScore gameScore = %05d", gameScore);
+	char format[] = "スコア : %05d";
+	char buf[50];
+	sprintf(buf, format, gameScore);
     Text* back_label = dynamic_cast<Text*>(uiLayout->getChildByName("Score"));
-    std::string text = std::string("score : %d", gameScore);
+	std::string text = std::string(buf);
     log("score = %s", text.c_str());
     back_label->setString(text);
-
 }
