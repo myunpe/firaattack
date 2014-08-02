@@ -13,6 +13,8 @@
 #include "vector"
 #include "list"
 
+USING_NS_CC;
+
 
 class GameClear : public cocos2d::Layer
 {
@@ -25,6 +27,12 @@ public:
     
     // implement the "static create()" method manually
     CREATE_FUNC(GameClear);
+
+
+	bool onTouchBegan(Touch *touch, Event *unused_event); 
+    void onTouchMoved(Touch *touch, Event *unused_event); 
+    void onTouchEnded(Touch *touch, Event *unused_event); 
+    void onTouchCancelled(Touch *touch, Event *unused_event);
     
 private:
     

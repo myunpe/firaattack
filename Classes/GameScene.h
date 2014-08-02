@@ -44,7 +44,7 @@ private:
     void onCollisionCheck(float detla);
     
     //点数追加
-    void addScore();
+    void addScore(Enemy* enemy);
     
 private:
     Player* mPlayer;

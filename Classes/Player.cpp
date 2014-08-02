@@ -74,7 +74,6 @@ void Player::onTouchEnded(Touch* touch, Event* event){
     power = 1000.0f;
     log("player onTouchEnded len = %f", power);
     beginTouch.normalize();
-    _eventDispatcher->setEnabled(false);
 }
 
 
@@ -86,7 +85,6 @@ void Player::move(float delta){
             onMoveEnd();
         }
         log("getPosition = x, y = %f, %f", getPosition().x, getPosition().y);
-        _eventDispatcher->setEnabled(true);
         unschedule(schedule_selector(Player::move));
     }
     Vec2 temp = beginTouch * delta * power + getPosition();

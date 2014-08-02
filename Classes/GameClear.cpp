@@ -7,6 +7,7 @@
 //
 
 #include "GameClear.h"
+#include "GameScene.h"
 
 
 USING_NS_CC;
@@ -51,6 +52,21 @@ bool GameClear::init()
     addChild(label);
     
 
-    
+	EventDispatcher* eventDispatcher = Director::getInstance()->getEventDispatcher();
+	EventListenerTouchOneByOne* touch = EventListenerTouchOneByOne::create();
+	touch->onTouchBegan = CC_CALLBACK_2(GameClear::onTouchBegan, this);
+	eventDispatcher->addEventListenerWithFixedPriority(touch,1);
+    /* Callback function should not be deprecated, it will generate lots of warnings.
+       Since 'setTouchEnabled' was deprecated, it will make warnings if developer overrides onTouchXXX and invokes setTouchEnabled(true) instead of using EventDispatcher::addEventListenerWithXXX.
+    */
     return true;
 }
+
+bool GameClear::onTouchBegan(Touch *touch, Event *unused_event){
+	log("onTouchBegan");
+	Director::getInstance()->replaceScene(GameScene::createScene());
+	return true;
+}
+void GameClear::onTouchMoved(Touch *touch, Event *unused_event){}
+void GameClear::onTouchEnded(Touch *touch, Event *unused_event){}
+void GameClear::onTouchCancelled(Touch *touch, Event *unused_event){}

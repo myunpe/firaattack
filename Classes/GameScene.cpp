@@ -99,7 +99,7 @@ bool GameScene::init()
     //一番上に来るようにindexOrderを上げる
     addChild(gameEffect, 1000);
     
-    auto userNotifyText = LabelTTF::create("フリックして", "Arial", 24);
+    auto userNotifyText = Label::create("フリックして", "Consolas", 24);
     userNotifyText->setPosition(visibleSize.width - (userNotifyText->getContentSize().width / 2), userNotifyText->getContentSize().height / 2);
     
     auto action2 = FadeOut::create(1.0f);
@@ -143,7 +143,7 @@ void GameScene::onCollisionCheck(float detla){
     for (auto it = enemyList.begin(); it != enemyList.end();) {
         if((*it)->onCollideWithPlayer(mPlayer)){
             //当たった時の処理を行いたい
-            addScore();
+            addScore(*it);
 			(*it)->removeFromParentAndCleanup(true);
             it = enemyList.erase(it);
 			continue;
@@ -176,14 +176,24 @@ void GameScene::readGameData(){
     
 }
 
-void GameScene::addScore(){
+void GameScene::addScore(Enemy* enemy){
     gameScore++;
     log("addScore gameScore = %05d", gameScore);
-	char format[] = "スコア : %05d";
+	char format[] = "コイン : %05d";
 	char buf[50];
 	sprintf(buf, format, gameScore);
     Text* back_label = dynamic_cast<Text*>(uiLayout->getChildByName("Score"));
 	std::string text = std::string(buf);
     log("score = %s", text.c_str());
     back_label->setString(text);
+
+	TextureCache* texCache = Director::getInstance()->getTextureCache();
+	Sprite* coin = Sprite::createWithTexture(texCache->addImage("coin.png"));
+	coin->setPosition(enemy->getPosition());
+	coin->setScale(0.5f);
+	coin->setAnchorPoint(Vec2(1.0f, 0.5f));
+	auto action = RepeatForever::create(RotateBy::create(0.5f, Vec3(0.0f, 360.0f, 0.0f)));
+	coin->runAction(action);
+	
+	addChild(coin);
 }
