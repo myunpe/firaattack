@@ -28,6 +28,7 @@ public:
     // implement the "static create()" method manually
     CREATE_FUNC(GameClear);
 
+	void onExit();
 
 	bool onTouchBegan(Touch *touch, Event *unused_event); 
     void onTouchMoved(Touch *touch, Event *unused_event); 

@@ -75,9 +75,7 @@ bool GameScene::init()
     
     mPlayer = Player::create("tileset.png");
     mPlayer->setPosition(Vec2(100, 100));
-    mPlayer->onMoveEnd = []{
-        log("onMoveEnd");
-    };
+	mPlayer->onMoveEnd = std::bind(std::mem_fn(&GameScene::onPlayerMoveEnd), this);
     this->addChild(mPlayer, 1);
     readGameData();
     
@@ -99,7 +97,7 @@ bool GameScene::init()
     //一番上に来るようにindexOrderを上げる
     addChild(gameEffect, 1000);
     
-    auto userNotifyText = Label::create("フリックして", "Consolas", 24);
+    auto userNotifyText = Label::create("Flickして", "Consolas", 24);
     userNotifyText->setPosition(visibleSize.width - (userNotifyText->getContentSize().width / 2), userNotifyText->getContentSize().height / 2);
     
     auto action2 = FadeOut::create(1.0f);
@@ -124,18 +122,29 @@ void GameScene::onEnter(){
     Layer::onEnter();
 }
 
+void GameScene::onExit(){
+	Layer::onExit();
+	this->removeAllChildrenWithCleanup(true);
+}
+
+void GameScene::onPlayerMoveEnd(){
+	log("onMoveEnd");
+
+	
+}
+
 void GameScene::menuCloseCallback(Ref* pSender)
 {
-//#if (CC_TARGET_PLATFORM == CC_PLATFORM_WP8) || (CC_TARGET_PLATFORM == CC_PLATFORM_WINRT)
-//	MessageBox("You pressed the close button. Windows Store Apps do not implement a close button.","Alert");
-//    return;
-//#endif
-//    
-//    Director::getInstance()->end();
-//    
-//#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-//    exit(0);
-//#endif
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_WP8) || (CC_TARGET_PLATFORM == CC_PLATFORM_WINRT)
+	MessageBox("You pressed the close button. Windows Store Apps do not implement a close button.","Alert");
+    return;
+#endif
+    
+    Director::getInstance()->end();
+    
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+    exit(0);
+#endif
     
 }
 

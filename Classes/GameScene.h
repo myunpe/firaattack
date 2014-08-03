@@ -29,6 +29,7 @@ public:
     virtual bool init();
     
     void onEnter();
+	void onExit();
     
     // a selector callback
     void menuCloseCallback(cocos2d::Ref* pSender);
@@ -45,6 +46,8 @@ private:
     
     //点数追加
     void addScore(Enemy* enemy);
+
+	void onPlayerMoveEnd();
     
 private:
     Player* mPlayer;

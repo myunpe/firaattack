@@ -61,7 +61,7 @@ bool Player::onTouchBegan(Touch* touch, Event* event){
     return true;
 }
 void Player::onTouchMoved(Touch* touch, Event* event){
-    log("player onTouchMoved");
+//    log("player onTouchMoved");
 }
 void Player::onTouchEnded(Touch* touch, Event* event){
     Vec2 endTouch = touch->getLocation();

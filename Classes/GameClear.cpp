@@ -56,10 +56,13 @@ bool GameClear::init()
 	EventListenerTouchOneByOne* touch = EventListenerTouchOneByOne::create();
 	touch->onTouchBegan = CC_CALLBACK_2(GameClear::onTouchBegan, this);
 	eventDispatcher->addEventListenerWithFixedPriority(touch,1);
-    /* Callback function should not be deprecated, it will generate lots of warnings.
-       Since 'setTouchEnabled' was deprecated, it will make warnings if developer overrides onTouchXXX and invokes setTouchEnabled(true) instead of using EventDispatcher::addEventListenerWithXXX.
-    */
-    return true;
+    
+	return true;
+}
+
+void GameClear::onExit(){
+	Layer::onExit();
+	this->removeAllChildrenWithCleanup(true);
 }
 
 bool GameClear::onTouchBegan(Touch *touch, Event *unused_event){
