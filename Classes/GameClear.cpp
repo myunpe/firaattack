@@ -63,6 +63,7 @@ bool GameClear::init()
 void GameClear::onExit(){
 	Layer::onExit();
 	this->removeAllChildrenWithCleanup(true);
+	Director::getInstance()->getEventDispatcher()->removeAllEventListeners();
 }
 
 bool GameClear::onTouchBegan(Touch *touch, Event *unused_event){
