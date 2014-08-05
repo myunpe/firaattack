@@ -37,19 +37,19 @@ void Player::onEnter(){
     log("Player::onEnter");
     Sprite::onEnter();
     
-    auto touchListener = EventListenerTouchOneByOne::create();
     //touchListener->setSwallowTouches(true);
+    touchListener = EventListenerTouchOneByOne::create();
     
     touchListener->onTouchBegan = CC_CALLBACK_2(Player::onTouchBegan, this);
     touchListener->onTouchMoved = CC_CALLBACK_2(Player::onTouchMoved, this);
     touchListener->onTouchEnded = CC_CALLBACK_2(Player::onTouchEnded, this);
     
-    _eventDispatcher->addEventListenerWithSceneGraphPriority(touchListener, this);
-
+    Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(touchListener, this);
 }
 
 void Player::onExit(){
     Sprite::onExit();
+    Director::getInstance()->getEventDispatcher()->removeEventListener(touchListener);
 }
 
 

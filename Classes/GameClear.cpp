@@ -60,6 +60,11 @@ bool GameClear::init()
 	return true;
 }
 
+void GameClear::onEnter(){
+    log("GameClear:onEnter");
+    Layer::onEnter();
+}
+
 void GameClear::onExit(){
 	Layer::onExit();
 	this->removeAllChildrenWithCleanup(true);

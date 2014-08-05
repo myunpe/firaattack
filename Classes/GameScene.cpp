@@ -122,11 +122,15 @@ bool GameScene::init()
 }
 
 void GameScene::onEnter(){
+    log("GameScene:onEnter");
     Layer::onEnter();
 }
 
 void GameScene::onExit(){
+    log("GameScene:onExit");
 	Layer::onExit();
+    enemyList.clear();
+    itemList.clear();
 	this->removeAllChildrenWithCleanup(true);
 }
 
@@ -160,6 +164,11 @@ void GameScene::onPlayerMoveEnd(){
 void GameScene::coinRemove(Node* sprite){
 	addScore(15);
 	removeChild(sprite);
+    
+    if (enemyList.empty() && itemList.empty()) {
+        Director::getInstance()->replaceScene(TransitionFade::create(1.0f, GameClear::createScene(), Color3B::BLACK));
+        unschedule(schedule_selector(GameScene::onCollisionCheck));
+    }
 }
 
 void GameScene::coinAdd(Enemy* enemy){
@@ -201,11 +210,6 @@ void GameScene::onCollisionCheck(float detla){
 			continue;
         }
 		++it;
-    }
-
-    if (enemyList.empty()) {
-        Director::getInstance()->replaceScene(TransitionFade::create(1.0f, GameClear::createScene(), Color3B::BLACK));
-        unschedule(schedule_selector(GameScene::onCollisionCheck));
     }
 }
 
