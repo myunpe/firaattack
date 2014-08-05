@@ -97,7 +97,7 @@ bool GameScene::init()
     //一番上に来るようにindexOrderを上げる
     addChild(gameEffect, 1000);
     
-    auto userNotifyText = Label::create("Flickして", "Consolas", 24);
+    auto userNotifyText = Label::createWithSystemFont("フリックして", "Arieal", 24);
     userNotifyText->setPosition(visibleSize.width - (userNotifyText->getContentSize().width / 2), userNotifyText->getContentSize().height / 2);
     
     auto action2 = FadeOut::create(1.0f);
@@ -115,6 +115,9 @@ bool GameScene::init()
     uiLayout = static_cast<Layout*>(guiReader->widgetFromJsonFile("UIGame.ExportJson"));
     addChild(uiLayout);
     
+    //
+    itemList = std::list<Sprite*>();
+    
     return true;
 }
 
@@ -129,8 +132,19 @@ void GameScene::onExit(){
 
 void GameScene::onPlayerMoveEnd(){
 	log("onMoveEnd");
-
-	
+    for (auto it = itemList.begin(); it != itemList.end();) {
+        if(mPlayer->onCollideWithSprite(*it)){
+            (*it)->removeFromParentAndCleanup(true);
+            it = itemList.erase(it);
+			continue;
+        }
+		++it;
+    }
+    
+    if (enemyList.empty()) {
+        Director::getInstance()->replaceScene(TransitionFade::create(1.0f, GameClear::createScene(), Color3B::BLACK));
+        unschedule(schedule_selector(GameScene::onCollisionCheck));
+    }
 }
 
 void GameScene::menuCloseCallback(Ref* pSender)

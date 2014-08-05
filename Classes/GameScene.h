@@ -18,7 +18,6 @@ class Player;
 class Enemy;
 
 
-
 class GameScene : public cocos2d::Layer
 {
 public:
@@ -52,6 +51,7 @@ private:
 private:
     Player* mPlayer;
     std::list<Enemy*> enemyList;
+    std::list<cocos2d::Sprite*> itemList;
     cocos2d::ui::Layout* uiLayout;
     
     int enemyNum;

@@ -25,10 +25,14 @@ public:
     void onTouchEnded(Touch* touch, Event* event);
     
     Rect getRect();
+    Rect getRect(Sprite* sprite);
     void move(float delta);
     
     //Playerを生成するようのメソッド
     static Player* create(const std::string &filename);
+    
+    //Spriteとの当たり判定
+    bool onCollideWithSprite(Sprite* other);
     
 public:
     std::function<void()> onMoveEnd;

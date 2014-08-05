@@ -117,3 +117,27 @@ Rect Player::getRect()
     auto s = getTexture()->getContentSize();
     return Rect(-s.width / 2, -s.height / 2, s.width, s.height);
 }
+
+Rect Player::getRect(Sprite* sprite)
+{
+    auto s = sprite->getTexture()->getContentSize();
+    return Rect(-s.width / 2, -s.height / 2, s.width, s.height);
+}
+
+
+bool Player::onCollideWithSprite(Sprite* other)
+{
+    auto spriteRect = this->getRect(other);
+    spriteRect.origin.x += other->getPosition().x;
+    spriteRect.origin.y += other->getPosition().y;
+    
+    Rect rect = Rect(0, 0, getContentSize().width, getContentSize().height);
+    rect.origin.x += getPosition().x;
+    rect.origin.y += getPosition().y;
+    
+    if(rect.intersectsRect(spriteRect)){
+        return true;
+    }
+    
+    return false;
+}

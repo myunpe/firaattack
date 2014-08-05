@@ -86,6 +86,8 @@
 		8C67A5FA1982D1790093F618 /* GameScene.json in Resources */ = {isa = PBXBuildFile; fileRef = 8C67A5F71982D1790093F618 /* GameScene.json */; };
 		8C67A5FB1982D1790093F618 /* UIGame.ExportJson in Resources */ = {isa = PBXBuildFile; fileRef = 8C67A5F81982D1790093F618 /* UIGame.ExportJson */; };
 		8C67A5FC1982D1790093F618 /* UIGame.ExportJson in Resources */ = {isa = PBXBuildFile; fileRef = 8C67A5F81982D1790093F618 /* UIGame.ExportJson */; };
+		8C67A5FE198E8FB00093F618 /* coin.png in Resources */ = {isa = PBXBuildFile; fileRef = 8C67A5FD198E8FB00093F618 /* coin.png */; };
+		8C67A5FF198E8FB00093F618 /* coin.png in Resources */ = {isa = PBXBuildFile; fileRef = 8C67A5FD198E8FB00093F618 /* coin.png */; };
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
 		BF1712471292920000B8313A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB412928DE900B8313A /* libz.dylib */; };
 		BF1C47F01293687400B63C5D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF1C47EA1293683800B63C5D /* QuartzCore.framework */; };
@@ -301,6 +303,7 @@
 		8C67A5F41982B6A10093F618 /* TitleScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TitleScene.h; path = ../Classes/TitleScene.h; sourceTree = "<group>"; };
 		8C67A5F71982D1790093F618 /* GameScene.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = GameScene.json; sourceTree = "<group>"; };
 		8C67A5F81982D1790093F618 /* UIGame.ExportJson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = UIGame.ExportJson; sourceTree = "<group>"; };
+		8C67A5FD198E8FB00093F618 /* coin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = coin.png; sourceTree = "<group>"; };
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB412928DE900B8313A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		BF1C47EA1293683800B63C5D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -506,6 +509,7 @@
 		78C7DDAA14EBA5050085D0C2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				8C67A5FD198E8FB00093F618 /* coin.png */,
 				8C67A5F71982D1790093F618 /* GameScene.json */,
 				8C67A5F81982D1790093F618 /* UIGame.ExportJson */,
 				8C67A5E1197B88560093F618 /* fire.png */,
@@ -687,6 +691,7 @@
 			files = (
 				5087E78117EB970100C73F5D /* Icon-120.png in Resources */,
 				8C67A5DA197A7E120093F618 /* data.json in Resources */,
+				8C67A5FE198E8FB00093F618 /* coin.png in Resources */,
 				5087E78617EB970100C73F5D /* Icon-76.png in Resources */,
 				8C67A5D7197A32A20093F618 /* enemy.png in Resources */,
 				5087E77F17EB970100C73F5D /* Default@2x.png in Resources */,
@@ -726,6 +731,7 @@
 				8C67A5DB197A7E120093F618 /* data.json in Resources */,
 				8C67A5CC197971B60093F618 /* back1.png in Resources */,
 				503AE0F817EB97AB00D1A890 /* Icon.icns in Resources */,
+				8C67A5FF198E8FB00093F618 /* coin.png in Resources */,
 				5087E75417EB910900C73F5D /* CloseSelected.png in Resources */,
 				8C67A5FC1982D1790093F618 /* UIGame.ExportJson in Resources */,
 				5087E75517EB910900C73F5D /* HelloWorld.png in Resources */,
