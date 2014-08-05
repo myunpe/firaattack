@@ -132,20 +132,49 @@ void GameScene::onExit(){
 
 void GameScene::onPlayerMoveEnd(){
 	log("onMoveEnd");
-    for (auto it = itemList.begin(); it != itemList.end();) {
-        if(mPlayer->onCollideWithSprite(*it)){
-            (*it)->removeFromParentAndCleanup(true);
-            it = itemList.erase(it);
-			continue;
-        }
+	for (auto it = itemList.begin(); it != itemList.end();) {
+		auto move = MoveTo::create(1.0f, mPlayer->getPosition());
+		auto func = CallFuncN::create(CC_CALLBACK_1(GameScene::coinRemove, this));
+		auto action = Sequence::create(move, func, nullptr);
+		(*it)->runAction(action);
 		++it;
     }
+
+	itemList.clear();
+	//CallFunc::create( CC_CALLBACK_0(CrashTest::removeThis,this)),
+	
     
-    if (enemyList.empty()) {
-        Director::getInstance()->replaceScene(TransitionFade::create(1.0f, GameClear::createScene(), Color3B::BLACK));
-        unschedule(schedule_selector(GameScene::onCollisionCheck));
-    }
+	//if(mPlayer->onCollideWithSprite(*it)){
+ //       (*it)->removeFromParentAndCleanup(true);
+ //       it = itemList.erase(it);
+	//	continue;
+ //   }
+	//++it;
+ //    
+ //   if (enemyList.empty()) {
+ //       Director::getInstance()->replaceScene(TransitionFade::create(1.0f, GameClear::createScene(), Color3B::BLACK));
+ //       unschedule(schedule_selector(GameScene::onCollisionCheck));
+ //   }
 }
+
+void GameScene::coinRemove(Node* sprite){
+	addScore(15);
+	removeChild(sprite);
+}
+
+void GameScene::coinAdd(Enemy* enemy){
+	TextureCache* texCache = Director::getInstance()->getTextureCache();
+	Sprite* coin = Sprite::createWithTexture(texCache->addImage("coin.png"));
+	coin->setPosition(enemy->getPosition());
+	coin->setScale(0.5f);
+	coin->setAnchorPoint(Vec2(1.0f, 0.5f));
+	auto action = RepeatForever::create(RotateBy::create(0.5f, Vec3(0.0f, 360.0f, 0.0f)));
+	coin->runAction(action);
+	itemList.push_back(coin);
+	
+	addChild(coin);
+}
+
 
 void GameScene::menuCloseCallback(Ref* pSender)
 {
@@ -166,7 +195,7 @@ void GameScene::onCollisionCheck(float detla){
     for (auto it = enemyList.begin(); it != enemyList.end();) {
         if((*it)->onCollideWithPlayer(mPlayer)){
             //当たった時の処理を行いたい
-            addScore(*it);
+			coinAdd(*it);
 			(*it)->removeFromParentAndCleanup(true);
             it = enemyList.erase(it);
 			continue;
@@ -199,8 +228,8 @@ void GameScene::readGameData(){
     
 }
 
-void GameScene::addScore(Enemy* enemy){
-    gameScore++;
+void GameScene::addScore(int addCount){
+	gameScore += addCount;
     log("addScore gameScore = %05d", gameScore);
 	char format[] = "コイン : %05d";
 	char buf[50];
@@ -209,14 +238,4 @@ void GameScene::addScore(Enemy* enemy){
 	std::string text = std::string(buf);
     log("score = %s", text.c_str());
     back_label->setString(text);
-
-	TextureCache* texCache = Director::getInstance()->getTextureCache();
-	Sprite* coin = Sprite::createWithTexture(texCache->addImage("coin.png"));
-	coin->setPosition(enemy->getPosition());
-	coin->setScale(0.5f);
-	coin->setAnchorPoint(Vec2(1.0f, 0.5f));
-	auto action = RepeatForever::create(RotateBy::create(0.5f, Vec3(0.0f, 360.0f, 0.0f)));
-	coin->runAction(action);
-	
-	addChild(coin);
 }

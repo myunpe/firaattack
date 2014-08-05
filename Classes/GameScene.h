@@ -44,9 +44,13 @@ private:
     void onCollisionCheck(float detla);
     
     //点数追加
-    void addScore(Enemy* enemy);
-
+    void addScore(int addCount);
+	//プレイヤーの移動が終了した時呼ばれる
 	void onPlayerMoveEnd();
+	//コインを表示する関数
+	void coinAdd(Enemy* enemy);
+	//移動後コインを消す関数
+	void coinRemove(cocos2d::Node* sprite);
     
 private:
     Player* mPlayer;
