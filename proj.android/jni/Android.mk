@@ -17,8 +17,8 @@ LOCAL_SRC_FILES := hellocpp/main.cpp \
                    ../../Classes/Enemy.cpp \
                    ../../Classes/GameEffect.cpp \
                    ../../Classes/GameClear.cpp \
-                   ../../Classes/library/json11.cpp 
-
+                   ../../Classes/TitleScene.cpp \
+                   
 LOCAL_C_INCLUDES := $(LOCAL_PATH)/../../Classes
 
 LOCAL_WHOLE_STATIC_LIBRARIES := cocos2dx_static

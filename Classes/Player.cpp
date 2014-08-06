@@ -29,7 +29,7 @@ Player* Player::create(const std::string &filename){
     player->addChild(particle, 10);
     
     particle->setTexture( Director::getInstance()->getTextureCache()->addImage(fire) );
-	particle->setPosition(Vec2(-player->getRect().getMaxX(),0));
+	particle->setPosition(Vec2(-player->getRect().getMinX(),0));
 
     return player;
 }
@@ -119,21 +119,22 @@ void Player::move(float delta){
 Rect Player::getRect()
 {
     auto s = getTexture()->getContentSize();
-    return Rect(-s.width / 2, -s.height / 2, s.width, s.height);
+    return Rect(0, 0, s.width, s.height);
 }
 
 Rect Player::getRect(Sprite* sprite)
 {
     auto s = sprite->getTexture()->getContentSize();
-    return Rect(-s.width / 2, -s.height / 2, s.width, s.height);
+    Rect r = Rect(0, 0, s.width, s.height);
+    r.origin.x += sprite->getPosition().x;
+    r.origin.y += sprite->getPosition().y;
+    return r;
 }
 
 
 bool Player::onCollideWithSprite(Sprite* other)
 {
     auto spriteRect = this->getRect(other);
-    spriteRect.origin.x += other->getPosition().x;
-    spriteRect.origin.y += other->getPosition().y;
     
     Rect rect = Rect(0, 0, getContentSize().width, getContentSize().height);
     rect.origin.x += getPosition().x;
