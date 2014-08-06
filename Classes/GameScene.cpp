@@ -50,7 +50,7 @@ bool GameScene::init()
     }
     
     //変数初期化
-    gameScore = 0;
+	gameCoin = 0;
     
     Size visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
@@ -124,7 +124,8 @@ bool GameScene::init()
 void GameScene::onEnter(){
     log("GameScene:onEnter");
     Layer::onEnter();
-	gameScore = UserDefault::getInstance()->getIntegerForKey("gameCoin",100);
+	gameCoin = UserDefault::getInstance()->getIntegerForKey("gameCoin",100);
+	addScore(0);	//ゲーム画面に反映するため
 }
 
 void GameScene::onExit(){
@@ -134,7 +135,7 @@ void GameScene::onExit(){
     itemList.clear();
 	this->removeAllChildrenWithCleanup(true);
 	UserDefault* ud = UserDefault::getInstance();
-	ud->setIntegerForKey("gameCoin", gameScore);
+	ud->setIntegerForKey("gameCoin", gameCoin);
 	ud->flush();
 }
 
@@ -231,11 +232,11 @@ void GameScene::readGameData(){
 }
 
 void GameScene::addScore(int addCount){
-	gameScore += addCount;
-    log("addScore gameScore = %05d", gameScore);
+	gameCoin += addCount;
+	log("addScore gameScore = %05d", gameCoin);
 	char format[] = "コイン : %05d";
 	char buf[50];
-	sprintf(buf, format, gameScore);
+	sprintf(buf, format, gameCoin);
     Text* back_label = dynamic_cast<Text*>(uiLayout->getChildByName("Score"));
 	std::string text = std::string(buf);
     log("score = %s", text.c_str());

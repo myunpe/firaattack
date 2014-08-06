@@ -21,45 +21,45 @@ class Enemy;
 class GameScene : public cocos2d::Layer
 {
 public:
-    // there's no 'id' in cpp, so we recommend returning the class instance pointer
-    static cocos2d::Scene* createScene();
-    
-    // Here's a difference. Method 'init' in cocos2d-x returns bool, instead of returning 'id' in cocos2d-iphone
-    virtual bool init();
-    
-    void onEnter();
+	// there's no 'id' in cpp, so we recommend returning the class instance pointer
+	static cocos2d::Scene* createScene();
+
+	// Here's a difference. Method 'init' in cocos2d-x returns bool, instead of returning 'id' in cocos2d-iphone
+	virtual bool init();
+
+	void onEnter();
 	void onExit();
-    
-    // a selector callback
-    void menuCloseCallback(cocos2d::Ref* pSender);
-    
-    // implement the "static create()" method manually
-    CREATE_FUNC(GameScene);
-    
+
+	// a selector callback
+	void menuCloseCallback(cocos2d::Ref* pSender);
+
+	// implement the "static create()" method manually
+	CREATE_FUNC(GameScene);
+
 private:
-    //Jsonからゲームデータを読み込む
-    void readGameData();
-    
-    //当たり判定チェック用
-    void onCollisionCheck(float detla);
-    
-    //点数追加
-    void addScore(int addCount);
+	//Jsonからゲームデータを読み込む
+	void readGameData();
+
+	//当たり判定チェック用
+	void onCollisionCheck(float detla);
+
+	//点数追加
+	void addScore(int addCount);
 	//プレイヤーの移動が終了した時呼ばれる
 	void onPlayerMoveEnd();
 	//コインを表示する関数
 	void coinAdd(Enemy* enemy);
 	//移動後コインを消す関数
 	void coinRemove(cocos2d::Node* sprite);
-    
+
 private:
-    Player* mPlayer;
-    std::list<Enemy*> enemyList;
-    std::list<cocos2d::Sprite*> itemList;
-    cocos2d::ui::Layout* uiLayout;
-    
-    int enemyNum;
-    int gameScore;
+	Player* mPlayer;
+	std::list<Enemy*> enemyList;
+	std::list<cocos2d::Sprite*> itemList;
+	cocos2d::ui::Layout* uiLayout;
+
+	int enemyNum;
+	int gameCoin;
 };
 
 
