@@ -124,6 +124,7 @@ bool GameScene::init()
 void GameScene::onEnter(){
     log("GameScene:onEnter");
     Layer::onEnter();
+	gameScore = UserDefault::getInstance()->getIntegerForKey("gameCoin",100);
 }
 
 void GameScene::onExit(){
@@ -132,6 +133,9 @@ void GameScene::onExit(){
     enemyList.clear();
     itemList.clear();
 	this->removeAllChildrenWithCleanup(true);
+	UserDefault* ud = UserDefault::getInstance();
+	ud->setIntegerForKey("gameCoin", gameScore);
+	ud->flush();
 }
 
 void GameScene::onPlayerMoveEnd(){

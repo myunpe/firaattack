@@ -28,8 +28,8 @@ Player* Player::create(const std::string &filename){
     particle->retain();
     player->addChild(particle, 10);
     
-    particle->setTexture( Director::getInstance()->getTextureCache()->addImage(fire) );//.pvr");
-    particle->setPosition(Vec2(-player->getRect().getMidX(),0));
+    particle->setTexture( Director::getInstance()->getTextureCache()->addImage(fire) );
+	particle->setPosition(Vec2(-player->getRect().getMaxX(),0));
 
     return player;
 }
