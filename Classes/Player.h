@@ -36,6 +36,7 @@ public:
     
 public:
     std::function<void()> onMoveEnd;
+    bool isUserAct; //ユーザーが操作出来るか
     
 private:
     Vec2 beginTouch;

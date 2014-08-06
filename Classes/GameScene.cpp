@@ -136,6 +136,10 @@ void GameScene::onExit(){
 
 void GameScene::onPlayerMoveEnd(){
 	log("onMoveEnd");
+    if (itemList.empty()) return;
+    
+    mPlayer->isUserAct = false;
+    log("isUSerAct = false");
 	for (auto it = itemList.begin(); it != itemList.end();) {
 		auto move = MoveTo::create(1.0f, mPlayer->getPosition());
 		auto func = CallFuncN::create(CC_CALLBACK_1(GameScene::coinRemove, this));
@@ -145,25 +149,15 @@ void GameScene::onPlayerMoveEnd(){
     }
 
 	itemList.clear();
-	//CallFunc::create( CC_CALLBACK_0(CrashTest::removeThis,this)),
-	
-    
-	//if(mPlayer->onCollideWithSprite(*it)){
- //       (*it)->removeFromParentAndCleanup(true);
- //       it = itemList.erase(it);
-	//	continue;
- //   }
-	//++it;
- //    
- //   if (enemyList.empty()) {
- //       Director::getInstance()->replaceScene(TransitionFade::create(1.0f, GameClear::createScene(), Color3B::BLACK));
- //       unschedule(schedule_selector(GameScene::onCollisionCheck));
- //   }
 }
 
 void GameScene::coinRemove(Node* sprite){
 	addScore(15);
 	removeChild(sprite);
+    
+    if (itemList.empty()) {
+        mPlayer->isUserAct = true;
+    }
     
     if (enemyList.empty() && itemList.empty()) {
         Director::getInstance()->replaceScene(TransitionFade::create(1.0f, GameClear::createScene(), Color3B::BLACK));

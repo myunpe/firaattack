@@ -11,7 +11,8 @@
 static const char fire[] = "fire.png";
 
 Player::Player() : Sprite(){
-    
+    isUserAct = true;
+    power = 0.0f;
 }
 
 Player::~Player(){
@@ -55,6 +56,9 @@ void Player::onExit(){
 
 bool Player::onTouchBegan(Touch* touch, Event* event){
     log("player onTouchbegan");
+    if (!isUserAct || power > 0.0f) { //移動中はタッチとれないようにしてみた
+        return false;
+    }
     unschedule(schedule_selector(Player::move));
     beginTouch = touch->getLocation();
 //    thistouch->getLocation();
