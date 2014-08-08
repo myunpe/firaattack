@@ -99,8 +99,8 @@ void Player::move(float delta){
    
     Size winSize = Director::getInstance()->getWinSize();
     Rect r = getRect();
-    r.origin.x += getPosition().x;
-    r.origin.y += getPosition().y;
+    r.origin.x += getPosition().x - getContentSize().width / 2;
+    r.origin.y += getPosition().y - getContentSize().height / 2;
     if (0.0f > r.getMinX()){
         float len = - r.getMinX();
         beginTouch.x = -beginTouch.x;
@@ -136,9 +136,7 @@ bool Player::onCollideWithSprite(Sprite* other)
 {
     auto spriteRect = this->getRect(other);
     
-    Rect rect = Rect(0, 0, getContentSize().width, getContentSize().height);
-    rect.origin.x += getPosition().x;
-    rect.origin.y += getPosition().y;
+    Rect rect = this->getRect(this);
     
     if(rect.intersectsRect(spriteRect)){
         return true;
