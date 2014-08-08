@@ -145,8 +145,10 @@ void GameScene::onPlayerMoveEnd(){
     
     mPlayer->isUserAct = false;
     log("isUSerAct = false");
+	Text* coinLabel = dynamic_cast<Text*>(uiLayout->getChildByName("Score"));
+	
 	for (auto it = itemList.begin(); it != itemList.end();) {
-		auto move = MoveTo::create(1.0f, mPlayer->getPosition());
+		auto move = MoveTo::create(1.0f, coinLabel->getPosition() + coinLabel->getContentSize() / 2);
 		auto func = CallFuncN::create(CC_CALLBACK_1(GameScene::coinRemove, this));
 		auto action = Sequence::create(move, func, nullptr);
 		(*it)->runAction(action);
