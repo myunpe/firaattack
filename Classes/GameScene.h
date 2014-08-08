@@ -51,6 +51,8 @@ private:
 	void coinAdd(Enemy* enemy);
 	//移動後コインを消す関数
 	void coinRemove(cocos2d::Node* sprite);
+    //敵を生成する関数
+    void enemyCreate();
 
 private:
 	Player* mPlayer;

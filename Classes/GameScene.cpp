@@ -81,23 +81,14 @@ bool GameScene::init()
     
     
     enemyList = std::list<Enemy*>();
-    for (int i = 0; i < enemyNum; i++) {
-        Enemy* enemy = Enemy::create("enemy.png");
-        Vec2 enemyPos = Vec2();
-        enemyPos.x = rand() % (int)visibleSize.width;
-        enemyPos.y = rand() % (int)visibleSize.height;
-        enemy->setPosition(enemyPos);
-        addChild(enemy);
-        enemyList.push_back(enemy);
-    }
-    schedule(schedule_selector(GameScene::onCollisionCheck));
+    enemyCreate();
     
     GameEffect* gameEffect = GameEffect::create("");
     gameEffect->setDispatchTouch(false);
     //一番上に来るようにindexOrderを上げる
     addChild(gameEffect, 1000);
     
-    auto userNotifyText = Label::createWithSystemFont("フリックして", "Arieal", 24);
+    auto userNotifyText = Label::createWithSystemFont("フリックしてプレイヤーを飛ばしてね！", "Arieal", 24);
     userNotifyText->setPosition(visibleSize.width - (userNotifyText->getContentSize().width / 2), userNotifyText->getContentSize().height / 2);
     
     auto action2 = FadeOut::create(1.0f);
@@ -113,12 +104,27 @@ bool GameScene::init()
     //UIの読み方
     GUIReader* guiReader = GUIReader::getInstance();
     uiLayout = static_cast<Layout*>(guiReader->widgetFromJsonFile("UIGame.ExportJson"));
+    uiLayout->setPosition(Vec2(0, visibleSize.height - uiLayout->getContentSize().height));
     addChild(uiLayout);
     
     //
     itemList = std::list<Sprite*>();
     
     return true;
+}
+
+void GameScene::enemyCreate(){
+    Size visibleSize = Director::getInstance()->getVisibleSize();
+    for (int i = 0; i < enemyNum; i++) {
+        Enemy* enemy = Enemy::create("enemy.png");
+        Vec2 enemyPos = Vec2();
+        enemyPos.x = rand() % (int)(visibleSize.width - enemy->getContentSize().width) + enemy->getContentSize().width / 2;
+        enemyPos.y = rand() % (int)(visibleSize.height - enemy->getContentSize().height) + enemy->getContentSize().height / 2;
+        enemy->setPosition(enemyPos);
+        addChild(enemy);
+        enemyList.push_back(enemy);
+    }
+    schedule(schedule_selector(GameScene::onCollisionCheck));
 }
 
 void GameScene::onEnter(){
@@ -148,7 +154,7 @@ void GameScene::onPlayerMoveEnd(){
 	Text* coinLabel = dynamic_cast<Text*>(uiLayout->getChildByName("Score"));
 	
 	for (auto it = itemList.begin(); it != itemList.end();) {
-		auto move = MoveTo::create(1.0f, coinLabel->getPosition() + coinLabel->getContentSize() / 2);
+		auto move = MoveTo::create(1.0f, uiLayout->getPosition() + coinLabel->getPosition() + coinLabel->getContentSize() / 2);
 		auto func = CallFuncN::create(CC_CALLBACK_1(GameScene::coinRemove, this));
 		auto action = Sequence::create(move, func, nullptr);
 		(*it)->runAction(action);
@@ -167,8 +173,9 @@ void GameScene::coinRemove(Node* sprite){
     }
     
     if (enemyList.empty() && itemList.empty()) {
-        Director::getInstance()->replaceScene(TransitionFade::create(1.0f, GameClear::createScene(), Color3B::BLACK));
-        unschedule(schedule_selector(GameScene::onCollisionCheck));
+        enemyCreate();
+//        Director::getInstance()->replaceScene(TransitionFade::create(1.0f, GameClear::createScene(), Color3B::BLACK));
+//        unschedule(schedule_selector(GameScene::onCollisionCheck));
     }
 }
 
