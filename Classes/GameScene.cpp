@@ -74,7 +74,7 @@ bool GameScene::init()
     this->addChild(menu, 1);
     
     mPlayer = Player::create("tileset.png");
-    mPlayer->setPosition(Vec2(100, 100));
+    mPlayer->setPosition(Vec2(visibleSize.width / 2, 100));
 	mPlayer->onMoveEnd = std::bind(std::mem_fn(&GameScene::onPlayerMoveEnd), this);
     this->addChild(mPlayer, 1);
     readGameData();
@@ -119,7 +119,7 @@ void GameScene::enemyCreate(){
         Enemy* enemy = Enemy::create("enemy.png");
         Vec2 enemyPos = Vec2();
         enemyPos.x = rand() % (int)(visibleSize.width - enemy->getContentSize().width) + enemy->getContentSize().width / 2;
-        enemyPos.y = rand() % (int)(visibleSize.height - enemy->getContentSize().height) + enemy->getContentSize().height / 2;
+        enemyPos.y = rand() % (int)(visibleSize.height / 2 - enemy->getContentSize().height) + enemy->getContentSize().height / 2 + visibleSize.height / 2;
         enemy->setPosition(enemyPos);
         addChild(enemy);
         enemyList.push_back(enemy);
@@ -174,6 +174,9 @@ void GameScene::coinRemove(Node* sprite){
     
     if (enemyList.empty() && itemList.empty()) {
         enemyCreate();
+        //プレイヤーは初期値に戻る
+        Size visibleSize = Director::getInstance()->getVisibleSize();
+        mPlayer->setPosition(Vec2(visibleSize.width / 2, 100));
 //        Director::getInstance()->replaceScene(TransitionFade::create(1.0f, GameClear::createScene(), Color3B::BLACK));
 //        unschedule(schedule_selector(GameScene::onCollisionCheck));
     }
