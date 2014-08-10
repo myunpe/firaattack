@@ -86,7 +86,7 @@ bool GameScene::init()
     GameEffect* gameEffect = GameEffect::create("");
     gameEffect->setDispatchTouch(false);
     //一番上に来るようにindexOrderを上げる
-    addChild(gameEffect, 1000);
+    addChild(gameEffect, 1000, 1000);
     
     auto userNotifyText = Label::createWithSystemFont("フリックしてプレイヤーを飛ばしてね！", "Arieal", 24);
     userNotifyText->setPosition(visibleSize.width - (userNotifyText->getContentSize().width / 2), userNotifyText->getContentSize().height / 2);
@@ -147,9 +147,8 @@ void GameScene::onExit(){
 
 void GameScene::onPlayerMoveEnd(){
 	log("onMoveEnd");
-    if (itemList.empty()) return;
-    
     mPlayer->isUserAct = false;
+    if (itemList.empty()) return;
     log("isUSerAct = false");
 	Text* coinLabel = dynamic_cast<Text*>(uiLayout->getChildByName("Score"));
 	
@@ -198,16 +197,19 @@ void GameScene::coinAdd(Enemy* enemy){
 
 void GameScene::menuCloseCallback(Ref* pSender)
 {
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_WP8) || (CC_TARGET_PLATFORM == CC_PLATFORM_WINRT)
-	MessageBox("You pressed the close button. Windows Store Apps do not implement a close button.","Alert");
-    return;
-#endif
-    
-    Director::getInstance()->end();
-    
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-    exit(0);
-#endif
+//#if (CC_TARGET_PLATFORM == CC_PLATFORM_WP8) || (CC_TARGET_PLATFORM == CC_PLATFORM_WINRT)
+//	MessageBox("You pressed the close button. Windows Store Apps do not implement a close button.","Alert");
+//    return;
+//#endif
+//    
+//    Director::getInstance()->end();
+//    
+//#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+//    exit(0);
+//#endif
+    GameEffect* effect = static_cast<GameEffect*>(getChildByTag(1000));
+//    effect->failEffect();
+    effect->clearEffect();
     
 }
 

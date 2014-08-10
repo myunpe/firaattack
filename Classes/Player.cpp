@@ -13,6 +13,7 @@ static const char fire[] = "fire.png";
 Player::Player() : Sprite(){
     isUserAct = true;
     power = 0.0f;
+    reflectMax = UserDefault::getInstance()->getIntegerForKey("reflectMax", 3);
 }
 
 Player::~Player(){
@@ -30,7 +31,7 @@ Player* Player::create(const std::string &filename){
     
     particle->setTexture( Director::getInstance()->getTextureCache()->addImage(fire) );
 	particle->setPosition(Vec2(-player->getRect().getMinX(),0));
-
+    
     return player;
 }
 
@@ -59,6 +60,7 @@ bool Player::onTouchBegan(Touch* touch, Event* event){
     if (!isUserAct || power > 0.0f) { //移動中はタッチとれないようにしてみた
         return false;
     }
+    reflectCount = 0;
     unschedule(schedule_selector(Player::move));
     beginTouch = touch->getLocation();
 //    thistouch->getLocation();
@@ -83,19 +85,25 @@ void Player::onTouchEnded(Touch* touch, Event* event){
 
 void Player::move(float delta){
     
-    power -= 5.0f;
-    if (power <= 0.0f) {
-        if (onMoveEnd) {
-            onMoveEnd();
-        }
-        log("getPosition = x, y = %f, %f", getPosition().x, getPosition().y);
-        unschedule(schedule_selector(Player::move));
-    }
+    //power -= 5.0f;
     Vec2 temp = beginTouch * delta * power + getPosition();
 //    log("Player Move + delta %f, x = %f, y = %f, power = %f",delta, temp.x, temp.y, power);
     
 //    log("setPosition power = %f, x, y = %f, %f",power, temp.x, temp.y);
     this->setPosition(temp);
+    if (reflectCount >= reflectMax) {
+        Rect r = Rect(0, 0, Director::getInstance()->getVisibleSize().width, Director::getInstance()->getVisibleSize().height);
+        if(!r.containsPoint(getPosition()+getContentSize()/2) && !r.containsPoint(getPosition()-getContentSize()/2)
+           ){
+            if (onMoveEnd) {
+                onMoveEnd();
+            }
+            power = 0.0f;
+            log("getPosition = x, y = %f, %f", getPosition().x, getPosition().y);
+            unschedule(schedule_selector(Player::move));
+        }
+        return;
+    }
    
     Size winSize = Director::getInstance()->getWinSize();
     Rect r = getRect();
@@ -105,13 +113,16 @@ void Player::move(float delta){
         float len = - r.getMinX();
         beginTouch.x = -beginTouch.x;
         setPosition(getPosition().x + len , getPosition().y);
+        reflectCount++;
     }else if(r.getMaxX() >= winSize.width) {
         float len =  -(r.getMaxX() - winSize.width);
         beginTouch.x = -beginTouch.x;
         setPosition(getPosition().x + len , getPosition().y);
+        reflectCount++;
     }
     if (0.0f > r.getMinY() || r.getMaxY() >= winSize.height) {
         beginTouch.y = -beginTouch.y;
+        reflectCount++;
     }
     
 }

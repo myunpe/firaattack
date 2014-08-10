@@ -35,6 +35,11 @@ public:
     //Playerを生成するようのメソッド
     static GameEffect* create(const std::string &filename);
     
+    
+    //失敗した時のエフェクト
+    void failEffect();
+    //クリアした時のエフェクト
+    void clearEffect();
 
     
 private:
