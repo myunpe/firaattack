@@ -45,7 +45,7 @@
     "_width": 640
   },
   "Triggers": null,
-  "Version": "1.5.0.1",
+  "Version": "1.6.0.0",
   "components": [
     {
       "__type": "ComSceneSurrogate:#EditorCommon.JsonModel.Component",
