@@ -84,6 +84,10 @@
 		8C67A5FC1982D1790093F618 /* UIGame.ExportJson in Resources */ = {isa = PBXBuildFile; fileRef = 8C67A5F81982D1790093F618 /* UIGame.ExportJson */; };
 		8C67A5FE198E8FB00093F618 /* coin.png in Resources */ = {isa = PBXBuildFile; fileRef = 8C67A5FD198E8FB00093F618 /* coin.png */; };
 		8C67A5FF198E8FB00093F618 /* coin.png in Resources */ = {isa = PBXBuildFile; fileRef = 8C67A5FD198E8FB00093F618 /* coin.png */; };
+		8C67A605199693380093F618 /* clear.png in Resources */ = {isa = PBXBuildFile; fileRef = 8C67A603199693380093F618 /* clear.png */; };
+		8C67A606199693380093F618 /* clear.png in Resources */ = {isa = PBXBuildFile; fileRef = 8C67A603199693380093F618 /* clear.png */; };
+		8C67A607199693380093F618 /* failed.png in Resources */ = {isa = PBXBuildFile; fileRef = 8C67A604199693380093F618 /* failed.png */; };
+		8C67A608199693380093F618 /* failed.png in Resources */ = {isa = PBXBuildFile; fileRef = 8C67A604199693380093F618 /* failed.png */; };
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
 		BF1712471292920000B8313A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB412928DE900B8313A /* libz.dylib */; };
 		BF1C47F01293687400B63C5D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF1C47EA1293683800B63C5D /* QuartzCore.framework */; };
@@ -298,6 +302,8 @@
 		8C67A5F71982D1790093F618 /* GameScene.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = GameScene.json; sourceTree = "<group>"; };
 		8C67A5F81982D1790093F618 /* UIGame.ExportJson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = UIGame.ExportJson; sourceTree = "<group>"; };
 		8C67A5FD198E8FB00093F618 /* coin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = coin.png; sourceTree = "<group>"; };
+		8C67A603199693380093F618 /* clear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clear.png; sourceTree = "<group>"; };
+		8C67A604199693380093F618 /* failed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = failed.png; sourceTree = "<group>"; };
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB412928DE900B8313A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		BF1C47EA1293683800B63C5D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -503,6 +509,8 @@
 		78C7DDAA14EBA5050085D0C2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				8C67A603199693380093F618 /* clear.png */,
+				8C67A604199693380093F618 /* failed.png */,
 				8C67A5FD198E8FB00093F618 /* coin.png */,
 				8C67A5F71982D1790093F618 /* GameScene.json */,
 				8C67A5F81982D1790093F618 /* UIGame.ExportJson */,
@@ -686,8 +694,10 @@
 				8C67A5FE198E8FB00093F618 /* coin.png in Resources */,
 				5087E78617EB970100C73F5D /* Icon-76.png in Resources */,
 				8C67A5D7197A32A20093F618 /* enemy.png in Resources */,
+				8C67A607199693380093F618 /* failed.png in Resources */,
 				5087E77F17EB970100C73F5D /* Default@2x.png in Resources */,
 				8C67A5CE197972900093F618 /* tileset.png in Resources */,
+				8C67A605199693380093F618 /* clear.png in Resources */,
 				50EF629917ECD46A001EB2F8 /* Icon-100.png in Resources */,
 				1AFAF8BC16D35E4900DB1158 /* CloseNormal.png in Resources */,
 				5087E78317EB970100C73F5D /* Icon-152.png in Resources */,
@@ -714,6 +724,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				8C67A5CF197972900093F618 /* tileset.png in Resources */,
+				8C67A606199693380093F618 /* clear.png in Resources */,
+				8C67A608199693380093F618 /* failed.png in Resources */,
 				5087E75317EB910900C73F5D /* CloseNormal.png in Resources */,
 				8C67A5FA1982D1790093F618 /* GameScene.json in Resources */,
 				8C67A5E3197B88560093F618 /* fire.png in Resources */,

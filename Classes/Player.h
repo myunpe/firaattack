@@ -42,6 +42,8 @@ private:
     Vec2 beginTouch;
     float power;
     EventListenerTouchOneByOne* touchListener;
+    int reflectCount;
+    int reflectMax;
 };
 
 
