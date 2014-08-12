@@ -87,8 +87,12 @@ bool GameScene::init()
     gameEffect->setDispatchTouch(false);
     //一番上に来るようにindexOrderを上げる
     addChild(gameEffect, 1000, 1000);
-    
-    auto userNotifyText = Label::createWithSystemFont("フリックしてプレイヤーを飛ばしてね！", "Arieal", 24);
+
+#ifdef __MINGW32__
+	auto userNotifyText = Label::createWithSystemFont("フリックしてプレイヤーを飛ばしてね！", "Arial", 24);
+#else
+	auto userNotifyText = Label::createWithSystemFont("Flik", "Arial", 24);
+#endif
     userNotifyText->setPosition(visibleSize.width - (userNotifyText->getContentSize().width / 2), userNotifyText->getContentSize().height / 2);
     
     auto action2 = FadeOut::create(1.0f);
