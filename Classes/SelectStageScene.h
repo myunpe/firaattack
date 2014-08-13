@@ -8,6 +8,7 @@
 #ifndef __Tetris__SelectStageScene__
 #define __Tetris__SelectStageScene__
 #include "cocos2d.h"
+#include "ui\UIWidget.h"
 
 
 class SelectStageScene : public cocos2d::Layer
@@ -19,6 +20,9 @@ public:
 
 	// implement the "static create()" method manually
 	CREATE_FUNC(SelectStageScene);
+
+private:
+	void buttonTouchEvent(cocos2d::Ref *pSender, cocos2d::ui::Widget::TouchEventType type);
 };
 
 

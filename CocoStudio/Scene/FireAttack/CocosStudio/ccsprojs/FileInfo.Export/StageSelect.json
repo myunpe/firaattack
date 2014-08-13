@@ -1,5 +1,7 @@
 [
   "publish/selectbutton.png",
+  "publish/clearicon.png",
+  "publish/StageSelectScene0.png",
   "publish\\StageSelect.json",
-  "publish/StageSelectScene.json"
+  "publish/StageSelectScene.ExportJson"
 ]
