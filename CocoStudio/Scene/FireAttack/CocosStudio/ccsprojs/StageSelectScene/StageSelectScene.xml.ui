@@ -16,9 +16,11 @@
   <filePath>Z:\gitrepo\fireattack\CocoStudio\Scene\FireAttack\CocosStudio\ccsprojs\StageSelectScene\StageSelectScene.xml.ui</filePath>
   <ProjectType>UIProject</ProjectType>
   <ResRelativePath>\\..\\..\\assets</ResRelativePath>
-  <imageFileList />
+  <imageFileList>
+    <string>StageSelectScene0.plist</string>
+  </imageFileList>
   <imagePngList>
-    <string>selectbutton.png</string>
+    <string>StageSelectScene0.png</string>
   </imagePngList>
   <JsonSuffix>.json</JsonSuffix>
   <CurrentUIJson>StageSelectScene.json</CurrentUIJson>
