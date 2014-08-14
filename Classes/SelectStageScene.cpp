@@ -12,13 +12,13 @@ Scene* SelectStageScene::createScene()
 {
     // 'scene' is an autorelease object
     auto scene = Scene::create();
-    
+
     // 'layer' is an autorelease object
 	auto layer = SelectStageScene::create();
-    
+
     // add layer as a child to scene
     scene->addChild(layer);
-    
+
     // return the scene
     return scene;
 }
@@ -32,17 +32,17 @@ bool SelectStageScene::init()
     {
         return false;
     }
-    
+
     Size visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
-    
-    //UIの読み方
+
+    //UI窶堙娯愿�窶堙昶｢ﾃｻ
     GUIReader* guiReader = GUIReader::getInstance();
     auto uiLayout = static_cast<Layout*>(guiReader->widgetFromJsonFile("StageSelectScene.ExportJson"));
     uiLayout->setPosition(Vec2(0, visibleSize.height - uiLayout->getContentSize().height));
     addChild(uiLayout);
 
-	log("uiLayer childcount = %d ", uiLayout->getChildrenCount());
+	log("uiLayer childcount = %l", uiLayout->getChildrenCount());
 	//log("uiLayer childcount = %d ", uiLayout->);
 	//ImageView* icon1 = static_cast<ImageView*>(uiLayout->getChildByName("clearicon1"));
 	//if(!icon1){
@@ -50,19 +50,19 @@ bool SelectStageScene::init()
 	//}
 	for (int i = 0; i < 5; i++)
 	{
-		//クリアアイコンの表示、非表示
+        //繧｢繧､繧ｳ繝ｳ逕ｨ蜷榊燕繧剃ｽ懊ｋ
 		char filename[50];
 		sprintf(filename, "clearicon%d", i+1);
 		auto icon = Helper::seekWidgetByName(uiLayout, filename);
 		icon->setVisible(false);
 
-		//ステージボタン
+        //繝懊ち繝ｳ逕ｨ蜷榊燕繧剃ｽ懊ｋ
 		sprintf(filename, "SelectButton%d", i+1);
 		auto button = Helper::seekWidgetByName(uiLayout, filename);
 		button->addTouchEventListener(CC_CALLBACK_2(SelectStageScene::buttonTouchEvent, this));
 	}
-	
-    
+
+
     return true;
 }
 
@@ -77,8 +77,7 @@ void SelectStageScene::buttonTouchEvent(Ref *pSender, Widget::TouchEventType typ
 		break;
 	case cocos2d::ui::Widget::TouchEventType::ENDED:
 		log("name = %s",static_cast<Button*>(pSender)->getName().c_str());
-		//GameSceneへの遷移を実装する
-		//ボタン外の場合はendへこない
+        //GameScene縺ｸ縺ｨ驕ｷ遘ｻ縺吶ｋ繝ｭ繧ｸ繝�繧ｯ繧剃ｽ懊ｋ
 		break;
 	case cocos2d::ui::Widget::TouchEventType::CANCELED:
 		break;
