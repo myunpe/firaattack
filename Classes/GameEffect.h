@@ -39,8 +39,9 @@ public:
     //失敗した時のエフェクト
     void failEffect();
     //クリアした時のエフェクト
-    void clearEffect();
-
+    void clearEffect(std::function<void ()> callback);
+private:
+    void endEffect();
     
 private:
     Vec2 beginTouch;

@@ -3,6 +3,7 @@
 #include "ui/CocosGUI.h"
 #include "ui/UIHelper.h"
 #include "cocostudio/CocoStudio.h"
+#include "GameScene.h"
 
 USING_NS_CC;
 using namespace cocostudio;
@@ -42,22 +43,25 @@ bool SelectStageScene::init()
     uiLayout->setPosition(Vec2(0, visibleSize.height - uiLayout->getContentSize().height));
     addChild(uiLayout);
 
-	log("uiLayer childcount = %l", uiLayout->getChildrenCount());
 	//log("uiLayer childcount = %d ", uiLayout->);
 	//ImageView* icon1 = static_cast<ImageView*>(uiLayout->getChildByName("clearicon1"));
 	//if(!icon1){
 	//	icon1->setVisible(false);
 	//}
-	for (int i = 0; i < 5; i++)
+	for (int i = 1; i < 6; i++)
 	{
         //アイコン用名前を作る
 		char filename[50];
-		sprintf(filename, "clearicon%d", i+1);
+		sprintf(filename, "clearicon%d", i);
 		auto icon = Helper::seekWidgetByName(uiLayout, filename);
-		icon->setVisible(false);
+        if(UserDefault::getInstance()->getBoolForKey(StringUtils::format("stage%d", i).c_str(), false)){
+            icon->setVisible(true);
+        }else{
+            icon->setVisible(false);
+        }
 
         //ボタン用名前を作る
-		sprintf(filename, "SelectButton%d", i+1);
+		sprintf(filename, "SelectButton%d", i);
 		auto button = Helper::seekWidgetByName(uiLayout, filename);
 		button->addTouchEventListener(CC_CALLBACK_2(SelectStageScene::buttonTouchEvent, this));
 	}
@@ -67,19 +71,32 @@ bool SelectStageScene::init()
 }
 
 void SelectStageScene::buttonTouchEvent(Ref *pSender, Widget::TouchEventType type){
-	log("buttonTouchEvent");
-
 	switch (type)
 	{
 	case cocos2d::ui::Widget::TouchEventType::BEGAN:
+        log("buttonTouchEvent BEGAN");
+
 		break;
 	case cocos2d::ui::Widget::TouchEventType::MOVED:
+        log("buttonTouchEvent MOVE");
+
 		break;
 	case cocos2d::ui::Widget::TouchEventType::ENDED:
-		log("name = %s",static_cast<Button*>(pSender)->getName().c_str());
-        //GameSceneへと遷移するロジックを作る
-		break;
+    {
+        std::string name = static_cast<Button*>(pSender)->getName();
+        for (int i = 1; i < 6; i++) {
+            std::string buf = StringUtils::format("SelectButton%d", i);
+            log("name = %s, buf = %s ", name.c_str(), buf.c_str());
+            if (name.compare(buf) == 0) {
+                //GameSceneへと遷移するロジックを作る
+                auto transitionAction = TransitionFade::create(1.0f, GameScene::createScene(i), Color3B(255, 255, 255));
+                Director::getInstance()->replaceScene(transitionAction);
+                break;
+            }
+        }
+    }break;
 	case cocos2d::ui::Widget::TouchEventType::CANCELED:
+        log("buttonTouchEvent CANCELED");
 		break;
 	default:
 		break;

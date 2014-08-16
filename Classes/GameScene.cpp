@@ -15,6 +15,7 @@
 #include "cocostudio/CCSGUIReader.h"
 #include "ui/CocosGUI.h"
 #include "cocostudio/CocoStudio.h"
+#include "SelectStageScene.h"
 
 
 
@@ -23,13 +24,17 @@ using namespace cocostudio;
 using namespace cocos2d::ui;
 
 
-Scene* GameScene::createScene()
+Scene* GameScene::createScene(int stageId)
 {
     // 'scene' is an autorelease object
     auto scene = Scene::create();
     
     // 'layer' is an autorelease object
     auto layer = GameScene::create();
+    log("stageId = %d", stageId);
+    layer->stageId = stageId;
+    layer->readGameData();
+    layer->enemyCreate();
     
     // add layer as a child to scene
     scene->addChild(layer);
@@ -77,11 +82,9 @@ bool GameScene::init()
     mPlayer->setPosition(Vec2(visibleSize.width / 2, 100));
 	mPlayer->onMoveEnd = std::bind(std::mem_fn(&GameScene::onPlayerMoveEnd), this);
     this->addChild(mPlayer, 1);
-    readGameData();
     
     
     enemyList = std::list<Enemy*>();
-    enemyCreate();
     
     GameEffect* gameEffect = GameEffect::create("");
     gameEffect->setDispatchTouch(false);
@@ -89,9 +92,9 @@ bool GameScene::init()
     addChild(gameEffect, 1000, 1000);
 
 #ifdef __MINGW32__
-	auto userNotifyText = Label::createWithSystemFont("フリックしてプレイヤーを飛ばしてね！", "Arial", 24);
+    auto userNotifyText = Label::createWithSystemFont("Flik", "Arial", 24);
 #else
-	auto userNotifyText = Label::createWithSystemFont("Flik", "Arial", 24);
+    auto userNotifyText = Label::createWithSystemFont("フリックしてプレイヤーを飛ばしてね！", "Arial", 24);
 #endif
     userNotifyText->setPosition(visibleSize.width - (userNotifyText->getContentSize().width / 2), userNotifyText->getContentSize().height / 2);
     
@@ -176,12 +179,26 @@ void GameScene::coinRemove(Node* sprite){
     }
     
     if (enemyList.empty() && itemList.empty()) {
-        enemyCreate();
-        //プレイヤーは初期値に戻る
-        Size visibleSize = Director::getInstance()->getVisibleSize();
-        mPlayer->setPosition(Vec2(visibleSize.width / 2, 100));
-//        Director::getInstance()->replaceScene(TransitionFade::create(1.0f, GameClear::createScene(), Color3B::BLACK));
-//        unschedule(schedule_selector(GameScene::onCollisionCheck));
+        //数が0になった場合はゲームクリア
+        //クリア保存
+        std::string clearKey = StringUtils::format("stage%d", stageId);
+        log("clearKey = %s", clearKey.c_str());
+        UserDefault::getInstance()->setBoolForKey(clearKey.c_str(), true);
+        mPlayer->unscheduleAllSelectors();
+        unschedule(schedule_selector(GameScene::onCollisionCheck));
+        GameEffect* effect = static_cast<GameEffect*>(getChildByTag(1000));
+        effect->clearEffect([] {
+            auto transitionAction = TransitionFade::create(1.0f, SelectStageScene::createScene(), Color3B(255, 255, 255));
+            Director::getInstance()->replaceScene(transitionAction);
+        });
+    }else{
+        //失敗
+        GameEffect* effect = static_cast<GameEffect*>(getChildByTag(1000));
+//        effect->clearEffect([] {
+//            auto transitionAction = TransitionFade::create(1.0f, SelectStageScene::createScene(), Color3B(255, 255, 255));
+//            Director::getInstance()->replaceScene(transitionAction);
+//        });
+        effect->failEffect();
     }
 }
 
@@ -211,9 +228,9 @@ void GameScene::menuCloseCallback(Ref* pSender)
 //#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
 //    exit(0);
 //#endif
-    GameEffect* effect = static_cast<GameEffect*>(getChildByTag(1000));
+//    GameEffect* effect = static_cast<GameEffect*>(getChildByTag(1000));
 //    effect->failEffect();
-    effect->clearEffect();
+//    effect->clearEffect();
     
 }
 

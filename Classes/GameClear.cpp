@@ -51,7 +51,6 @@ bool GameClear::init()
     label->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2));
     addChild(label);
     
-
 	EventDispatcher* eventDispatcher = Director::getInstance()->getEventDispatcher();
 	EventListenerTouchOneByOne* touch = EventListenerTouchOneByOne::create();
 	touch->onTouchBegan = CC_CALLBACK_2(GameClear::onTouchBegan, this);
@@ -73,7 +72,7 @@ void GameClear::onExit(){
 
 bool GameClear::onTouchBegan(Touch *touch, Event *unused_event){
 	log("onTouchBegan");
-	Director::getInstance()->replaceScene(GameScene::createScene());
+	Director::getInstance()->replaceScene(GameScene::createScene(1));
 	return true;
 }
 void GameClear::onTouchMoved(Touch *touch, Event *unused_event){}

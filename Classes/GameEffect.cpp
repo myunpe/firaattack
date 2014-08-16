@@ -66,7 +66,7 @@ void GameEffect::failEffect(){
 //    });
 }
 
-void GameEffect::clearEffect(){
+void GameEffect::clearEffect(std::function<void ()> onEndEffect){
     this->setVisible(true);
     Sprite* clear = Sprite::create("clear.png");
     Size winSize = Director::getInstance()->getWinSize();
@@ -77,10 +77,15 @@ void GameEffect::clearEffect(){
     auto alphaAction = FadeIn::create(1.5f);
     auto scaleAction = ScaleTo::create(1.5f, 1.0f);
     auto setAction = Spawn::create(Repeat::create(rotateAction, 3),alphaAction, scaleAction, NULL);
-    clear->runAction(setAction);
-//    clear->runAction(alphaAction);
-//    clear->runAction(scaleAction);
+    auto callback = CallFunc::create(onEndEffect);
+    auto delay = DelayTime::create(1.0f);
+    auto sequence = Sequence::create(setAction, delay, callback, NULL);
+    clear->runAction(sequence);
     addChild(clear);
+}
+
+void GameEffect::endEffect(){
+    log("endEffect");
 }
 
 void GameEffect::setDispatchTouch(bool isEnable){
