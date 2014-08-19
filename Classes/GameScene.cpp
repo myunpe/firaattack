@@ -34,6 +34,7 @@ Scene* GameScene::createScene(int stageId)
     log("stageId = %d", stageId);
     layer->stageId = stageId;
     layer->readGameData();
+    layer->enemyNum = stageId;
     layer->enemyCreate();
     
     // add layer as a child to scene
@@ -155,7 +156,10 @@ void GameScene::onExit(){
 void GameScene::onPlayerMoveEnd(){
 	log("onMoveEnd");
     mPlayer->isUserAct = false;
-    if (itemList.empty()) return;
+    if (itemList.empty()){
+        fail();
+        return;
+    }
     log("isUSerAct = false");
 	Text* coinLabel = dynamic_cast<Text*>(uiLayout->getChildByName("Score"));
 	
@@ -168,6 +172,7 @@ void GameScene::onPlayerMoveEnd(){
     }
 
 	itemList.clear();
+    
 }
 
 void GameScene::coinRemove(Node* sprite){
@@ -192,13 +197,7 @@ void GameScene::coinRemove(Node* sprite){
             Director::getInstance()->replaceScene(transitionAction);
         });
     }else{
-        //失敗
-        GameEffect* effect = static_cast<GameEffect*>(getChildByTag(1000));
-//        effect->clearEffect([] {
-//            auto transitionAction = TransitionFade::create(1.0f, SelectStageScene::createScene(), Color3B(255, 255, 255));
-//            Director::getInstance()->replaceScene(transitionAction);
-//        });
-        effect->failEffect();
+        fail();
     }
 }
 
@@ -213,6 +212,17 @@ void GameScene::coinAdd(Enemy* enemy){
 	itemList.push_back(coin);
 	
 	addChild(coin);
+}
+
+void GameScene::fail()
+{
+    //失敗
+    GameEffect* effect = static_cast<GameEffect*>(getChildByTag(1000));
+    effect->failEffect([] {
+        auto transitionAction = TransitionFade::create(1.0f, SelectStageScene::createScene(), Color3B(255, 255, 255));
+        Director::getInstance()->replaceScene(transitionAction);
+    });
+    log("game fail");    
 }
 
 

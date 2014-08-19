@@ -257,7 +257,7 @@ public:
      * Changes the display frame with animation name and index.
      * The animation name will be get from the AnimationCache
      */
-    virtual void setDisplayFrameWithAnimationName(const std::string& animationName, ssize_t frameIndex);
+    //virtual void setDisplayFrameWithAnimationName(const std::string& animationName, ssize_t frameIndex);
     /// @}
 
 

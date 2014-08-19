@@ -37,9 +37,10 @@ public:
     
     
     //失敗した時のエフェクト
-    void failEffect();
+    void failEffect(std::function<void()> callback);
     //クリアした時のエフェクト
-    void clearEffect(std::function<void ()> callback);
+    void clearEffect(std::function<void()> callback);
+
 private:
     void endEffect();
     

@@ -53,6 +53,8 @@ private:
 	void coinRemove(cocos2d::Node* sprite);
     //敵を生成する関数
     void enemyCreate();
+    //失敗した時の処理
+    void fail();
 
 private:
 	Player* mPlayer;

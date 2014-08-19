@@ -51,22 +51,20 @@ void GameEffect::onExit(){
     Sprite::onExit();
 }
 
-void GameEffect::failEffect(){
+void GameEffect::failEffect(std::function<void()> onEndEffect){
     this->setVisible(true);
     Sprite* fail = Sprite::create("failed.png");
     Size winSize = Director::getInstance()->getWinSize();
     fail->setPosition(winSize.width / 2.0f, winSize.height);
     auto moveAction = MoveTo::create(1.2f, Vec2(winSize.width / 2.0f, winSize.height / 2.0f));
-    fail->runAction(moveAction);
-//    fail->setPosition(Vec2(100, 100));
+    auto delay = DelayTime::create(1.0f);
+    auto callback = CallFunc::create(onEndEffect);
+    auto sequence = Sequence::create(moveAction, delay, callback, nullptr);
+    fail->runAction(sequence);
     addChild(fail);
-    
-//    MenuItem* item1 = MenuItem::create([](Ref* sender){
-//        log("item1 callback");
-//    });
 }
 
-void GameEffect::clearEffect(std::function<void ()> onEndEffect){
+void GameEffect::clearEffect(std::function<void()> onEndEffect){
     this->setVisible(true);
     Sprite* clear = Sprite::create("clear.png");
     Size winSize = Director::getInstance()->getWinSize();
@@ -76,10 +74,10 @@ void GameEffect::clearEffect(std::function<void ()> onEndEffect){
     auto rotateAction = RotateBy::create(0.6f, Vec3(0.0f, 360.0f, 0.0f));
     auto alphaAction = FadeIn::create(1.5f);
     auto scaleAction = ScaleTo::create(1.5f, 1.0f);
-    auto setAction = Spawn::create(Repeat::create(rotateAction, 3),alphaAction, scaleAction, NULL);
+    auto setAction = Spawn::create(Repeat::create(rotateAction, 3),alphaAction, scaleAction, nullptr);
     auto callback = CallFunc::create(onEndEffect);
     auto delay = DelayTime::create(1.0f);
-    auto sequence = Sequence::create(setAction, delay, callback, NULL);
+    auto sequence = Sequence::create(setAction, delay, callback, nullptr);
     clear->runAction(sequence);
     addChild(clear);
 }

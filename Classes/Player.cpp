@@ -63,7 +63,6 @@ bool Player::onTouchBegan(Touch* touch, Event* event){
     reflectCount = 0;
     unschedule(schedule_selector(Player::move));
     beginTouch = touch->getLocation();
-//    thistouch->getLocation();
     return true;
 }
 void Player::onTouchMoved(Touch* touch, Event* event){

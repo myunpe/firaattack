@@ -966,20 +966,20 @@ void Sprite::setSpriteFrame(SpriteFrame *spriteFrame)
     setTextureRect(spriteFrame->getRect(), _rectRotated, spriteFrame->getOriginalSize());
 }
 
-void Sprite::setDisplayFrameWithAnimationName(const std::string& animationName, ssize_t frameIndex)
-{
-    CCASSERT(animationName.size()>0, "CCSprite#setDisplayFrameWithAnimationName. animationName must not be nullptr");
-
-    Animation *a = AnimationCache::getInstance()->getAnimation(animationName);
-
-    CCASSERT(a, "CCSprite#setDisplayFrameWithAnimationName: Frame not found");
-
-    AnimationFrame* frame = a->getFrames().at(frameIndex);
-
-    CCASSERT(frame, "CCSprite#setDisplayFrame. Invalid frame");
-
-    setSpriteFrame(frame->getSpriteFrame());
-}
+//void Sprite::setDisplayFrameWithAnimationName(const std::string& animationName, ssize_t frameIndex)
+//{
+//    CCASSERT(animationName.size()>0, "CCSprite#setDisplayFrameWithAnimationName. animationName must not be nullptr");
+//
+//    Animation *a = AnimationCache::getInstance()->getAnimation(animationName);
+//
+//    CCASSERT(a, "CCSprite#setDisplayFrameWithAnimationName: Frame not found");
+//
+//    AnimationFrame* frame = a->getFrames().at(frameIndex);
+//
+//    CCASSERT(frame, "CCSprite#setDisplayFrame. Invalid frame");
+//
+//    setSpriteFrame(frame->getSpriteFrame());
+//}
 
 bool Sprite::isFrameDisplayed(SpriteFrame *frame) const
 {

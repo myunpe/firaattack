@@ -8,7 +8,8 @@
 #ifndef __Tetris__SelectStageScene__
 #define __Tetris__SelectStageScene__
 #include "cocos2d.h"
-#include "ui/UIWidget.h"
+#include "ui/CocosGUI.h"
+
 
 
 class SelectStageScene : public cocos2d::Layer
