@@ -92,7 +92,7 @@ bool GameScene::init()
     //一番上に来るようにindexOrderを上げる
     addChild(gameEffect, 1000, 1000);
 
-#ifdef __MINGW32__
+#if CC_TARGET_PLATFORM == CC_PLATFORM_WIN32
     auto userNotifyText = Label::createWithSystemFont("Flik", "Arial", 24);
 #else
     auto userNotifyText = Label::createWithSystemFont("フリックしてプレイヤーを飛ばしてね！", "Arial", 24);
