@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>Tetris</name>
+	<name>FireAttack</name>
 	<comment></comment>
 	<projects>
 		<project>libcocos2dx</project>
@@ -43,7 +43,7 @@
 				</dictionary>
 				<dictionary>
 					<key>org.eclipse.cdt.make.core.buildArguments</key>
-					<value>${ProjDirPath}/build_native.py -b release</value>
+					<value>${ProjDirPath}/build_native.py</value>
 				</dictionary>
 				<dictionary>
 					<key>org.eclipse.cdt.make.core.buildCommand</key>

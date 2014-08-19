@@ -33,13 +33,14 @@ bool SelectStageScene::init()
     {
         return false;
     }
+    
 
     Size visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
-    //UI‚Ì“Ç‚Ý•û
     GUIReader* guiReader = GUIReader::getInstance();
     auto uiLayout = static_cast<Layout*>(guiReader->widgetFromJsonFile("StageSelectScene.ExportJson"));
+    uiLayout->setBackGroundColor(Color3B(0, 0, 0));
     uiLayout->setPosition(Vec2(0, visibleSize.height - uiLayout->getContentSize().height));
     addChild(uiLayout);
 

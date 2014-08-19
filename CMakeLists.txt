@@ -58,8 +58,7 @@ if( UNIX ) #assume linux
 set(GAME_SRC
   proj.linux/main.cpp
   Classes/AppDelegate.cpp
-  Classes/MainScene.cpp
-  Classes/Player.cpp
+  Classes/HelloWorldScene.cpp
 )
 elseif ( WIN32 )
 set(GAME_SRC
@@ -67,8 +66,7 @@ set(GAME_SRC
   proj.win32/main.h
   proj.win32/resource.h
   Classes/AppDelegate.cpp
-  Classes/MainScene.cpp
-  Classes/Player.cpp
+  Classes/HelloWorldScene.cpp
 )
 endif()
 
