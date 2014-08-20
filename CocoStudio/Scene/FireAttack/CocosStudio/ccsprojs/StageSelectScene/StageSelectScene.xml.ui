@@ -7,7 +7,8 @@
   <JsonFileName>StageSelectScene.json</JsonFileName>
   <JsonFolder>Z:\gitrepo\fireattack\CocoStudio\Scene\FireAttack\CocosStudio\ccsprojs\StageSelectScene\Json</JsonFolder>
   <JsonList>
-    <string>StageSelectScene.json</string>
+    <string>StageSelectSceneTest.json</string>
+    <string>StageSelect.json</string>
   </JsonList>
   <CanvasSize>
     <Width>640</Width>
@@ -16,12 +17,11 @@
   <filePath>Z:\gitrepo\fireattack\CocoStudio\Scene\FireAttack\CocosStudio\ccsprojs\StageSelectScene\StageSelectScene.xml.ui</filePath>
   <ProjectType>UIProject</ProjectType>
   <ResRelativePath>\\..\\..\\assets</ResRelativePath>
-  <imageFileList>
-    <string>StageSelectScene0.plist</string>
-  </imageFileList>
+  <imageFileList />
   <imagePngList>
-    <string>StageSelectScene0.png</string>
+    <string>selectbutton.png</string>
+    <string>clearicon.png</string>
   </imagePngList>
   <JsonSuffix>.json</JsonSuffix>
-  <CurrentUIJson>StageSelectScene.json</CurrentUIJson>
+  <CurrentUIJson>StageSelect.json</CurrentUIJson>
 </UIProject>

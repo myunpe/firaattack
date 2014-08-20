@@ -39,22 +39,20 @@ bool SelectStageScene::init()
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
     GUIReader* guiReader = GUIReader::getInstance();
-    auto uiLayout = static_cast<Layout*>(guiReader->widgetFromJsonFile("StageSelectScene.ExportJson"));
-    uiLayout->setBackGroundColor(Color3B(0, 0, 0));
-    uiLayout->setPosition(Vec2(0, visibleSize.height - uiLayout->getContentSize().height));
-    addChild(uiLayout);
+    auto uiLayout = static_cast<Layout*>(guiReader->widgetFromJsonFile("StageSelect.json"));
+	uiLayout->setScale(visibleSize.width / 640.0f, visibleSize.height / 960.0f);
+    //uiLayout->setPosition(Vec2(0, visibleSize.height - uiLayout->getContentSize().height));
+	addChild(uiLayout);
 
-	//log("uiLayer childcount = %d ", uiLayout->);
-	//ImageView* icon1 = static_cast<ImageView*>(uiLayout->getChildByName("clearicon1"));
-	//if(!icon1){
-	//	icon1->setVisible(false);
-	//}
+	//log("uiLayer childcount = %d ", uiLayout->getChildrenCount());
 	for (int i = 1; i < 6; i++)
 	{
         //アイコン用名前を作る
 		char filename[50];
 		sprintf(filename, "clearicon%d", i);
 		auto icon = Helper::seekWidgetByName(uiLayout, filename);
+		log("clearicon%s", filename);
+		
         if(UserDefault::getInstance()->getBoolForKey(StringUtils::format("stage%d", i).c_str(), false)){
             icon->setVisible(true);
         }else{
@@ -62,7 +60,7 @@ bool SelectStageScene::init()
         }
 
         //ボタン用名前を作る
-		sprintf(filename, "SelectButton%d", i);
+		sprintf(filename, "StageSelect%d", i);
 		auto button = Helper::seekWidgetByName(uiLayout, filename);
 		button->addTouchEventListener(CC_CALLBACK_2(SelectStageScene::buttonTouchEvent, this));
 	}
@@ -86,7 +84,7 @@ void SelectStageScene::buttonTouchEvent(Ref *pSender, Widget::TouchEventType typ
     {
         std::string name = static_cast<Button*>(pSender)->getName();
         for (int i = 1; i < 6; i++) {
-            std::string buf = StringUtils::format("SelectButton%d", i);
+            std::string buf = StringUtils::format("StageSelect%d", i);
             log("name = %s, buf = %s ", name.c_str(), buf.c_str());
             if (name.compare(buf) == 0) {
                 //GameSceneへと遷移するロジックを作る

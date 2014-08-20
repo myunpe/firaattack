@@ -16,13 +16,13 @@
       "classname": "CCNode",
       "name": null,
       "canedit": true,
-      "objecttag": 10003,
+      "objecttag": 10004,
       "rotation": 0,
       "scalex": 1,
       "scaley": 1,
       "visible": 1,
-      "x": 2.5,
-      "y": 1,
+      "x": -2,
+      "y": -2,
       "zorder": 1,
       "gameobjects": [],
       "components": [
@@ -32,7 +32,7 @@
           "name": "GUIComponent",
           "file": null,
           "fileData": {
-            "path": "publish/UIGame.ExportJson",
+            "path": "publish/StageSelectScene.ExportJson",
             "plistFile": "",
             "resourceType": 0
           }
@@ -51,7 +51,7 @@
       "__type": "ComSceneSurrogate:#EditorCommon.JsonModel.Component",
       "classname": "CCScene",
       "name": "CCScene",
-      "scenename": "GameScene"
+      "scenename": "StageSelect"
     },
     {
       "__type": "ComSimpleAudioSurrogate:#EditorCommon.JsonModel.Component",
