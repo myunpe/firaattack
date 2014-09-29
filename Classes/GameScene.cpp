@@ -73,9 +73,9 @@ bool GameScene::init()
                                 closeItem->getContentSize().height/2));
     
     // create menu, it's an autorelease object
-    auto menu = Menu::create(closeItem, NULL);
-    menu->setPosition(Vec2::ZERO);
-    this->addChild(menu, 1);
+    //auto menu = Menu::create(closeItem, NULL);
+    //menu->setPosition(Vec2::ZERO);
+    //this->addChild(menu, 1);
     
     mPlayer = Player::create("tileset.png");
     mPlayer->setPosition(Vec2(visibleSize.width / 2, 100));
@@ -124,8 +124,8 @@ void GameScene::enemyCreate(rapidjson::Value& enemyData){
 	for (int i = 0; i < enemyData.Size(); i++) {
         Enemy* enemy = Enemy::create("enemy.png");
         Vec2 enemyPos = Vec2();
-		enemyPos.x = enemyData[i]["x"].GetDouble() * visibleSize.width;//rand() % (int)(visibleSize.width - enemy->getContentSize().width) + enemy->getContentSize().width / 2;
-		enemyPos.y = (1.0 - enemyData[i]["y"].GetDouble()) * visibleSize.height;//rand() % (int)(visibleSize.height / 2 - enemy->getContentSize().height) + enemy->getContentSize().height / 2 + visibleSize.height / 2;
+		enemyPos.x = enemyData[i]["x"].GetDouble() * visibleSize.width;
+		enemyPos.y = (1.0 - enemyData[i]["y"].GetDouble()) * visibleSize.height;
         enemy->setPosition(enemyPos);
         addChild(enemy);
         enemyList.push_back(enemy);

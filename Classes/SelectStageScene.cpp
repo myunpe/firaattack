@@ -51,7 +51,6 @@ bool SelectStageScene::init()
 		char filename[50];
 		sprintf(filename, "clearicon%d", i);
 		auto icon = Helper::seekWidgetByName(uiLayout, filename);
-		log("clearicon%s", filename);
 		
         if(UserDefault::getInstance()->getBoolForKey(StringUtils::format("stage%d", i).c_str(), false)){
             icon->setVisible(true);
