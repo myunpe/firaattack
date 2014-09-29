@@ -33,6 +33,13 @@ public:
     
     //Spriteとの当たり判定
     bool onCollideWithSprite(Sprite* other);
+
+	//強制的に移動を終了させる
+	void forceMoveEnd();
+
+	//reflectMaxを設定
+	inline void setReflectMax(int max){ reflectMax = max; }
+	inline int getReflectMax() { return reflectMax - reflectCount; }
     
 public:
     std::function<void()> onMoveEnd;

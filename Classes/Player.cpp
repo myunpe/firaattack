@@ -14,6 +14,7 @@ Player::Player() : Sprite(){
     isUserAct = true;
     power = 0.0f;
     reflectMax = UserDefault::getInstance()->getIntegerForKey("reflectMax", 3);
+	reflectCount = 0;
 }
 
 Player::~Player(){
@@ -82,6 +83,16 @@ void Player::onTouchEnded(Touch* touch, Event* event){
 }
 
 
+void Player::forceMoveEnd(){
+	reflectCount = reflectMax;
+	if (onMoveEnd) {
+		onMoveEnd();
+	}
+	power = 0.0f;
+	log("getPosition = x, y = %f, %f", getPosition().x, getPosition().y);
+	unschedule(schedule_selector(Player::move));
+}
+
 void Player::move(float delta){
     
     //power -= 5.0f;
@@ -92,14 +103,8 @@ void Player::move(float delta){
     this->setPosition(temp);
     if (reflectCount >= reflectMax) {
         Rect r = Rect(0, 0, Director::getInstance()->getVisibleSize().width, Director::getInstance()->getVisibleSize().height);
-        if(!r.containsPoint(getPosition()+getContentSize()/2) && !r.containsPoint(getPosition()-getContentSize()/2)
-           ){
-            if (onMoveEnd) {
-                onMoveEnd();
-            }
-            power = 0.0f;
-            log("getPosition = x, y = %f, %f", getPosition().x, getPosition().y);
-            unschedule(schedule_selector(Player::move));
+        if(!r.containsPoint(getPosition()+getContentSize()/2) && !r.containsPoint(getPosition()-getContentSize()/2)){
+			forceMoveEnd();
         }
         return;
     }
