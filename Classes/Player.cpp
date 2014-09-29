@@ -30,7 +30,7 @@ Player* Player::create(const std::string &filename){
     player->addChild(particle, 10);
     
     particle->setTexture( Director::getInstance()->getTextureCache()->addImage(fire) );
-	particle->setPosition(Vec2(-player->getRect().getMinX(),0));
+	particle->setPosition(Vec2(player->getRect().getMidX(),0));
     
     return player;
 }
