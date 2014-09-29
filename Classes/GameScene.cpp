@@ -33,7 +33,6 @@ Scene* GameScene::createScene(int stageId)
     log("stageId = %d", stageId);
     layer->stageId = stageId;
     layer->readGameData();
-    layer->enemyNum = stageId;
     
     // add layer as a child to scene
     scene->addChild(layer);
@@ -64,13 +63,13 @@ bool GameScene::init()
     //    you may modify it.
     
     // add a "close" icon to exit the progress. it's an autorelease object
-    auto closeItem = MenuItemImage::create(
-                                           "CloseNormal.png",
-                                           "CloseSelected.png",
-                                           CC_CALLBACK_1(GameScene::menuCloseCallback, this));
-    
-	closeItem->setPosition(Vec2(closeItem->getContentSize().width/2 ,
-                                closeItem->getContentSize().height/2));
+ //   auto closeItem = MenuItemImage::create(
+ //                                          "CloseNormal.png",
+ //                                          "CloseSelected.png",
+ //                                          CC_CALLBACK_1(GameScene::menuCloseCallback, this));
+ //   
+	//closeItem->setPosition(Vec2(closeItem->getContentSize().width/2 ,
+ //                               closeItem->getContentSize().height/2));
     
     // create menu, it's an autorelease object
     //auto menu = Menu::create(closeItem, NULL);
@@ -267,8 +266,8 @@ void GameScene::readGameData(){
     auto data = FileUtils::getInstance()->getStringFromFile("data.json");
     rapidjson::Document doc;
     doc.Parse<rapidjson::kParseDefaultFlags>(data.c_str());
-    rapidjson::Value &val = doc["scene"];
-	log( "name = %s, enemy = %d", val["name"].GetString(), val["enemy"].Size());
+	rapidjson::Value &val = doc[stageId-1];
+	log( "name = %s, enemy = %d, stageId = %d", val["name"].GetString(), val["enemy"].Size(), stageId);
 	rapidjson::Value &enemyArray = val["enemy"];
 	this->enemyCreate(val["enemy"]);
     enemyNum = val["enemy"].Size();
