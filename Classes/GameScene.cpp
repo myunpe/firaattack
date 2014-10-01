@@ -76,12 +76,6 @@ bool GameScene::init()
     //menu->setPosition(Vec2::ZERO);
     //this->addChild(menu, 1);
     
-    mPlayer = Player::create("tileset.png");
-    mPlayer->setPosition(Vec2(visibleSize.width / 2, 100));
-	mPlayer->onMoveEnd = std::bind(std::mem_fn(&GameScene::onPlayerMoveEnd), this);
-    this->addChild(mPlayer, 1);
-    
-    
     enemyList = std::list<Enemy*>();
     
     GameEffect* gameEffect = GameEffect::create("");
@@ -114,6 +108,12 @@ bool GameScene::init()
     
     //
     itemList = std::list<Sprite*>();
+
+	mPlayer = Player::create("tileset.png");
+    mPlayer->setPosition(Vec2(visibleSize.width / 2, 100));
+	mPlayer->onMoveEnd = std::bind(std::mem_fn(&GameScene::onPlayerMoveEnd), this);
+    this->addChild(mPlayer, 1);
+    
     
     return true;
 }
