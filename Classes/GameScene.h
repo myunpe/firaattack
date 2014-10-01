@@ -13,6 +13,7 @@
 #include <vector>
 #include <list>
 #include "ui/CocosGUI.h"
+#include "json/document.h"
 
 class Player;
 class Enemy;
@@ -52,7 +53,7 @@ private:
 	//移動後コインを消す関数
 	void coinRemove(cocos2d::Node* sprite);
     //敵を生成する関数
-    void enemyCreate();
+	void enemyCreate(rapidjson::Value& enemyData);
     //失敗した時の処理
     void fail();
 

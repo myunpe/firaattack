@@ -11,7 +11,6 @@
 #include "Enemy.h"
 #include "GameEffect.h"
 #include "GameClear.h"
-#include "json/document.h"
 #include "cocostudio/CCSGUIReader.h"
 #include "ui/CocosGUI.h"
 #include "cocostudio/CocoStudio.h"
@@ -34,8 +33,6 @@ Scene* GameScene::createScene(int stageId)
     log("stageId = %d", stageId);
     layer->stageId = stageId;
     layer->readGameData();
-    layer->enemyNum = stageId;
-    layer->enemyCreate();
     
     // add layer as a child to scene
     scene->addChild(layer);
@@ -66,18 +63,18 @@ bool GameScene::init()
     //    you may modify it.
     
     // add a "close" icon to exit the progress. it's an autorelease object
-    auto closeItem = MenuItemImage::create(
-                                           "CloseNormal.png",
-                                           "CloseSelected.png",
-                                           CC_CALLBACK_1(GameScene::menuCloseCallback, this));
-    
-	closeItem->setPosition(Vec2(closeItem->getContentSize().width/2 ,
-                                closeItem->getContentSize().height/2));
+ //   auto closeItem = MenuItemImage::create(
+ //                                          "CloseNormal.png",
+ //                                          "CloseSelected.png",
+ //                                          CC_CALLBACK_1(GameScene::menuCloseCallback, this));
+ //   
+	//closeItem->setPosition(Vec2(closeItem->getContentSize().width/2 ,
+ //                               closeItem->getContentSize().height/2));
     
     // create menu, it's an autorelease object
-    auto menu = Menu::create(closeItem, NULL);
-    menu->setPosition(Vec2::ZERO);
-    this->addChild(menu, 1);
+    //auto menu = Menu::create(closeItem, NULL);
+    //menu->setPosition(Vec2::ZERO);
+    //this->addChild(menu, 1);
     
     mPlayer = Player::create("tileset.png");
     mPlayer->setPosition(Vec2(visibleSize.width / 2, 100));
@@ -121,13 +118,13 @@ bool GameScene::init()
     return true;
 }
 
-void GameScene::enemyCreate(){
+void GameScene::enemyCreate(rapidjson::Value& enemyData){
     Size visibleSize = Director::getInstance()->getVisibleSize();
-    for (int i = 0; i < enemyNum; i++) {
+	for (int i = 0; i < enemyData.Size(); i++) {
         Enemy* enemy = Enemy::create("enemy.png");
         Vec2 enemyPos = Vec2();
-        enemyPos.x = rand() % (int)(visibleSize.width - enemy->getContentSize().width) + enemy->getContentSize().width / 2;
-        enemyPos.y = rand() % (int)(visibleSize.height / 2 - enemy->getContentSize().height) + enemy->getContentSize().height / 2 + visibleSize.height / 2;
+		enemyPos.x = enemyData[i]["x"].GetDouble() * visibleSize.width;
+		enemyPos.y = (1.0 - enemyData[i]["y"].GetDouble()) * visibleSize.height;
         enemy->setPosition(enemyPos);
         addChild(enemy);
         enemyList.push_back(enemy);
@@ -157,6 +154,7 @@ void GameScene::onPlayerMoveEnd(){
 	log("onMoveEnd");
     mPlayer->isUserAct = false;
     if (itemList.empty()){
+		log("itemList.empty");
         fail();
         return;
     }
@@ -190,7 +188,6 @@ void GameScene::coinRemove(Node* sprite){
         log("clearKey = %s", clearKey.c_str());
         UserDefault::getInstance()->setBoolForKey(clearKey.c_str(), true);
         mPlayer->unscheduleAllSelectors();
-        unschedule(schedule_selector(GameScene::onCollisionCheck));
         GameEffect* effect = static_cast<GameEffect*>(getChildByTag(1000));
         effect->clearEffect([] {
             auto transitionAction = TransitionFade::create(1.0f, SelectStageScene::createScene(), Color3B(255, 255, 255));
@@ -255,6 +252,13 @@ void GameScene::onCollisionCheck(float detla){
         }
 		++it;
     }
+
+	//ターゲットが全てなくなったら、移動終了してコイン移動に移る
+	if (enemyList.empty())
+	{
+		unschedule(schedule_selector(GameScene::onCollisionCheck));
+		mPlayer->forceMoveEnd();
+	}
 }
 
 void GameScene::readGameData(){
@@ -262,9 +266,14 @@ void GameScene::readGameData(){
     auto data = FileUtils::getInstance()->getStringFromFile("data.json");
     rapidjson::Document doc;
     doc.Parse<rapidjson::kParseDefaultFlags>(data.c_str());
-    rapidjson::Value &val = doc["scene"];
-    log( "name = %s, enemy = %d", val["name"].GetString(), val["enemy"].GetInt());
-    enemyNum = val["enemy"].GetInt();
+	rapidjson::Value &val = doc[stageId-1];
+	log( "name = %s, enemy = %d, stageId = %d", val["name"].GetString(), val["enemy"].Size(), stageId);
+	rapidjson::Value &enemyArray = val["enemy"];
+	this->enemyCreate(val["enemy"]);
+    enemyNum = val["enemy"].Size();
+	mPlayer->setReflectMax(val["bounce"].GetInt());
+
+	
     
 //    auto jsonStringFile = FileUtils::getInstance()->getStringFromFile("data.json");
 //    std::string err;
