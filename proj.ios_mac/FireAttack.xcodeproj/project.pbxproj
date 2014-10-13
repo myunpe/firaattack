@@ -20,7 +20,6 @@
 		1AFAF8B716D35DE700DB1158 /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1AFAF8B316D35DE700DB1158 /* AppDelegate.cpp */; };
 		1AFAF8BC16D35E4900DB1158 /* CloseNormal.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AFAF8B916D35E4900DB1158 /* CloseNormal.png */; };
 		1AFAF8BD16D35E4900DB1158 /* CloseSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AFAF8BA16D35E4900DB1158 /* CloseSelected.png */; };
-		1AFAF8BE16D35E4900DB1158 /* HelloWorld.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AFAF8BB16D35E4900DB1158 /* HelloWorld.png */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
@@ -33,7 +32,6 @@
 		503AE11B17EB9C5A00D1A890 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 503AE11A17EB9C5A00D1A890 /* IOKit.framework */; };
 		5087E75317EB910900C73F5D /* CloseNormal.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AFAF8B916D35E4900DB1158 /* CloseNormal.png */; };
 		5087E75417EB910900C73F5D /* CloseSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AFAF8BA16D35E4900DB1158 /* CloseSelected.png */; };
-		5087E75517EB910900C73F5D /* HelloWorld.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AFAF8BB16D35E4900DB1158 /* HelloWorld.png */; };
 		5087E75717EB910900C73F5D /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1AFAF8B316D35DE700DB1158 /* AppDelegate.cpp */; };
 		5087E76317EB910900C73F5D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		5087E76517EB910900C73F5D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
@@ -84,26 +82,14 @@
 		8CC1061219A38919001ABC77 /* Marker Felt.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8CC105EE19A38919001ABC77 /* Marker Felt.ttf */; };
 		8CC1061319A38919001ABC77 /* GameScene.json in Resources */ = {isa = PBXBuildFile; fileRef = 8CC105EF19A38919001ABC77 /* GameScene.json */; };
 		8CC1061419A38919001ABC77 /* GameScene.json in Resources */ = {isa = PBXBuildFile; fileRef = 8CC105EF19A38919001ABC77 /* GameScene.json */; };
-		8CC1061519A38919001ABC77 /* HelloWorld.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CC105F019A38919001ABC77 /* HelloWorld.png */; };
-		8CC1061619A38919001ABC77 /* HelloWorld.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CC105F019A38919001ABC77 /* HelloWorld.png */; };
 		8CC1061719A38919001ABC77 /* makejson.php in Resources */ = {isa = PBXBuildFile; fileRef = 8CC105F119A38919001ABC77 /* makejson.php */; };
 		8CC1061819A38919001ABC77 /* makejson.php in Resources */ = {isa = PBXBuildFile; fileRef = 8CC105F119A38919001ABC77 /* makejson.php */; };
 		8CC1061919A38919001ABC77 /* selectbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CC105F219A38919001ABC77 /* selectbutton.png */; };
 		8CC1061A19A38919001ABC77 /* selectbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CC105F219A38919001ABC77 /* selectbutton.png */; };
 		8CC1061B19A38919001ABC77 /* StageSelect.json in Resources */ = {isa = PBXBuildFile; fileRef = 8CC105F319A38919001ABC77 /* StageSelect.json */; };
 		8CC1061C19A38919001ABC77 /* StageSelect.json in Resources */ = {isa = PBXBuildFile; fileRef = 8CC105F319A38919001ABC77 /* StageSelect.json */; };
-		8CC1061D19A38919001ABC77 /* StageSelectScene.ExportJson in Resources */ = {isa = PBXBuildFile; fileRef = 8CC105F419A38919001ABC77 /* StageSelectScene.ExportJson */; };
-		8CC1061E19A38919001ABC77 /* StageSelectScene.ExportJson in Resources */ = {isa = PBXBuildFile; fileRef = 8CC105F419A38919001ABC77 /* StageSelectScene.ExportJson */; };
 		8CC1061F19A38919001ABC77 /* StageSelectScene.json in Resources */ = {isa = PBXBuildFile; fileRef = 8CC105F519A38919001ABC77 /* StageSelectScene.json */; };
 		8CC1062019A38919001ABC77 /* StageSelectScene.json in Resources */ = {isa = PBXBuildFile; fileRef = 8CC105F519A38919001ABC77 /* StageSelectScene.json */; };
-		8CC1062119A38919001ABC77 /* clearicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CC105F719A38919001ABC77 /* clearicon.png */; };
-		8CC1062219A38919001ABC77 /* clearicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CC105F719A38919001ABC77 /* clearicon.png */; };
-		8CC1062319A38919001ABC77 /* selectbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CC105F819A38919001ABC77 /* selectbutton.png */; };
-		8CC1062419A38919001ABC77 /* selectbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CC105F819A38919001ABC77 /* selectbutton.png */; };
-		8CC1062519A38919001ABC77 /* StageSelectScene0.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8CC105F919A38919001ABC77 /* StageSelectScene0.plist */; };
-		8CC1062619A38919001ABC77 /* StageSelectScene0.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8CC105F919A38919001ABC77 /* StageSelectScene0.plist */; };
-		8CC1062719A38919001ABC77 /* StageSelectScene0.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CC105FA19A38919001ABC77 /* StageSelectScene0.png */; };
-		8CC1062819A38919001ABC77 /* StageSelectScene0.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CC105FA19A38919001ABC77 /* StageSelectScene0.png */; };
 		8CC1062919A38919001ABC77 /* tileset.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CC105FB19A38919001ABC77 /* tileset.png */; };
 		8CC1062A19A38919001ABC77 /* tileset.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CC105FB19A38919001ABC77 /* tileset.png */; };
 		8CC1062B19A38919001ABC77 /* UIGame.ExportJson in Resources */ = {isa = PBXBuildFile; fileRef = 8CC105FC19A38919001ABC77 /* UIGame.ExportJson */; };
@@ -281,7 +267,6 @@
 		1AFAF8B416D35DE700DB1158 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = ../Classes/AppDelegate.h; sourceTree = "<group>"; };
 		1AFAF8B916D35E4900DB1158 /* CloseNormal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CloseNormal.png; sourceTree = "<group>"; };
 		1AFAF8BA16D35E4900DB1158 /* CloseSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CloseSelected.png; sourceTree = "<group>"; };
-		1AFAF8BB16D35E4900DB1158 /* HelloWorld.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HelloWorld.png; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D6058910D05DD3D006BFB54 /* FireAttack iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FireAttack iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -330,16 +315,10 @@
 		8CC105EC19A38919001ABC77 /* fire.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fire.png; sourceTree = "<group>"; };
 		8CC105EE19A38919001ABC77 /* Marker Felt.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Marker Felt.ttf"; sourceTree = "<group>"; };
 		8CC105EF19A38919001ABC77 /* GameScene.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = GameScene.json; sourceTree = "<group>"; };
-		8CC105F019A38919001ABC77 /* HelloWorld.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HelloWorld.png; sourceTree = "<group>"; };
 		8CC105F119A38919001ABC77 /* makejson.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = makejson.php; sourceTree = "<group>"; };
 		8CC105F219A38919001ABC77 /* selectbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = selectbutton.png; sourceTree = "<group>"; };
 		8CC105F319A38919001ABC77 /* StageSelect.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = StageSelect.json; sourceTree = "<group>"; };
-		8CC105F419A38919001ABC77 /* StageSelectScene.ExportJson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = StageSelectScene.ExportJson; sourceTree = "<group>"; };
 		8CC105F519A38919001ABC77 /* StageSelectScene.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = StageSelectScene.json; sourceTree = "<group>"; };
-		8CC105F719A38919001ABC77 /* clearicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clearicon.png; sourceTree = "<group>"; };
-		8CC105F819A38919001ABC77 /* selectbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = selectbutton.png; sourceTree = "<group>"; };
-		8CC105F919A38919001ABC77 /* StageSelectScene0.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = StageSelectScene0.plist; sourceTree = "<group>"; };
-		8CC105FA19A38919001ABC77 /* StageSelectScene0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StageSelectScene0.png; sourceTree = "<group>"; };
 		8CC105FB19A38919001ABC77 /* tileset.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tileset.png; sourceTree = "<group>"; };
 		8CC105FC19A38919001ABC77 /* UIGame.ExportJson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = UIGame.ExportJson; sourceTree = "<group>"; };
 		8CC1062F19A38935001ABC77 /* Enemy.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Enemy.cpp; path = ../Classes/Enemy.cpp; sourceTree = "<group>"; };
@@ -575,20 +554,14 @@
 				8CC105EC19A38919001ABC77 /* fire.png */,
 				8CC105ED19A38919001ABC77 /* fonts */,
 				8CC105EF19A38919001ABC77 /* GameScene.json */,
-				8CC105F019A38919001ABC77 /* HelloWorld.png */,
 				8CC105F119A38919001ABC77 /* makejson.php */,
 				8CC105F219A38919001ABC77 /* selectbutton.png */,
 				8CC105F319A38919001ABC77 /* StageSelect.json */,
-				8CC105F419A38919001ABC77 /* StageSelectScene.ExportJson */,
 				8CC105F519A38919001ABC77 /* StageSelectScene.json */,
-				8CC105F619A38919001ABC77 /* StageSelectScene0_PList.Dir */,
-				8CC105F919A38919001ABC77 /* StageSelectScene0.plist */,
-				8CC105FA19A38919001ABC77 /* StageSelectScene0.png */,
 				8CC105FB19A38919001ABC77 /* tileset.png */,
 				8CC105FC19A38919001ABC77 /* UIGame.ExportJson */,
 				1AFAF8B916D35E4900DB1158 /* CloseNormal.png */,
 				1AFAF8BA16D35E4900DB1158 /* CloseSelected.png */,
-				1AFAF8BB16D35E4900DB1158 /* HelloWorld.png */,
 			);
 			name = Resources;
 			path = ../Resources;
@@ -600,15 +573,6 @@
 				8CC105EE19A38919001ABC77 /* Marker Felt.ttf */,
 			);
 			path = fonts;
-			sourceTree = "<group>";
-		};
-		8CC105F619A38919001ABC77 /* StageSelectScene0_PList.Dir */ = {
-			isa = PBXGroup;
-			children = (
-				8CC105F719A38919001ABC77 /* clearicon.png */,
-				8CC105F819A38919001ABC77 /* selectbutton.png */,
-			);
-			path = StageSelectScene0_PList.Dir;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -778,14 +742,11 @@
 				5087E78117EB970100C73F5D /* Icon-120.png in Resources */,
 				8CC1061B19A38919001ABC77 /* StageSelect.json in Resources */,
 				8CC1060719A38919001ABC77 /* coin.png in Resources */,
-				8CC1062519A38919001ABC77 /* StageSelectScene0.plist in Resources */,
-				8CC1062719A38919001ABC77 /* StageSelectScene0.png in Resources */,
 				8CC1060D19A38919001ABC77 /* failed.png in Resources */,
 				5087E78617EB970100C73F5D /* Icon-76.png in Resources */,
 				8CC1061319A38919001ABC77 /* GameScene.json in Resources */,
 				8CC1062B19A38919001ABC77 /* UIGame.ExportJson in Resources */,
 				8CC1061119A38919001ABC77 /* Marker Felt.ttf in Resources */,
-				8CC1062319A38919001ABC77 /* selectbutton.png in Resources */,
 				8CC1061719A38919001ABC77 /* makejson.php in Resources */,
 				8CC1060919A38919001ABC77 /* data.json in Resources */,
 				8CC1061F19A38919001ABC77 /* StageSelectScene.json in Resources */,
@@ -795,7 +756,6 @@
 				1AFAF8BC16D35E4900DB1158 /* CloseNormal.png in Resources */,
 				5087E78317EB970100C73F5D /* Icon-152.png in Resources */,
 				8CC1060F19A38919001ABC77 /* fire.png in Resources */,
-				8CC1061D19A38919001ABC77 /* StageSelectScene.ExportJson in Resources */,
 				8CC105FD19A38919001ABC77 /* .DS_Store in Resources */,
 				5087E77D17EB970100C73F5D /* Default-568h@2x.png in Resources */,
 				5087E78517EB970100C73F5D /* Icon-72.png in Resources */,
@@ -806,8 +766,6 @@
 				1AFAF8BD16D35E4900DB1158 /* CloseSelected.png in Resources */,
 				50EF62A317ECD613001EB2F8 /* Icon-50.png in Resources */,
 				5087E78017EB970100C73F5D /* Icon-114.png in Resources */,
-				8CC1062119A38919001ABC77 /* clearicon.png in Resources */,
-				1AFAF8BE16D35E4900DB1158 /* HelloWorld.png in Resources */,
 				8CC1060119A38919001ABC77 /* clearicon.png in Resources */,
 				50EF62A217ECD613001EB2F8 /* Icon-29.png in Resources */,
 				50EF629617ECD46A001EB2F8 /* Icon-40.png in Resources */,
@@ -815,7 +773,6 @@
 				50EF629817ECD46A001EB2F8 /* Icon-80.png in Resources */,
 				8CC1061919A38919001ABC77 /* selectbutton.png in Resources */,
 				5087E78417EB970100C73F5D /* Icon-57.png in Resources */,
-				8CC1061519A38919001ABC77 /* HelloWorld.png in Resources */,
 				5087E77E17EB970100C73F5D /* Default.png in Resources */,
 				50EF629717ECD46A001EB2F8 /* Icon-58.png in Resources */,
 			);
@@ -828,12 +785,8 @@
 				8CC1061819A38919001ABC77 /* makejson.php in Resources */,
 				8CC1060A19A38919001ABC77 /* data.json in Resources */,
 				5087E75317EB910900C73F5D /* CloseNormal.png in Resources */,
-				8CC1062219A38919001ABC77 /* clearicon.png in Resources */,
-				8CC1061E19A38919001ABC77 /* StageSelectScene.ExportJson in Resources */,
 				8CC1060C19A38919001ABC77 /* enemy.png in Resources */,
 				8CC1060419A38919001ABC77 /* CloseNormal.png in Resources */,
-				8CC1062419A38919001ABC77 /* selectbutton.png in Resources */,
-				8CC1062819A38919001ABC77 /* StageSelectScene0.png in Resources */,
 				8CC1061219A38919001ABC77 /* Marker Felt.ttf in Resources */,
 				8CC105FE19A38919001ABC77 /* .DS_Store in Resources */,
 				8CC1060219A38919001ABC77 /* clearicon.png in Resources */,
@@ -846,12 +799,9 @@
 				8CC1060819A38919001ABC77 /* coin.png in Resources */,
 				8CC1060019A38919001ABC77 /* clear.png in Resources */,
 				8CC1061A19A38919001ABC77 /* selectbutton.png in Resources */,
-				8CC1062619A38919001ABC77 /* StageSelectScene0.plist in Resources */,
 				5087E75417EB910900C73F5D /* CloseSelected.png in Resources */,
 				8CC1061C19A38919001ABC77 /* StageSelect.json in Resources */,
 				8CC1061419A38919001ABC77 /* GameScene.json in Resources */,
-				8CC1061619A38919001ABC77 /* HelloWorld.png in Resources */,
-				5087E75517EB910900C73F5D /* HelloWorld.png in Resources */,
 				8CC1062019A38919001ABC77 /* StageSelectScene.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
