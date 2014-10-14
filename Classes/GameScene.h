@@ -34,19 +34,12 @@ public:
     void onTouchMoved(Touch* touch, Event* event);
     void onTouchEnded(Touch* touch, Event* event);
 
-	// a selector callback
-	void menuCloseCallback(cocos2d::Ref* pSender);
-
-	// implement the "static create()" method manually
 	CREATE_FUNC(GameScene);
-
 private:
 	//Jsonからゲームデータを読み込む
 	void readGameData();
-
 	//当たり判定チェック用
 	void onCollisionCheck(float detla);
-
 	//点数追加
 	void addScore(int addCount);
 	//プレイヤーの移動が終了した時呼ばれる
@@ -59,14 +52,13 @@ private:
 	void enemyCreate(rapidjson::Value& enemyData);
     //失敗した時の処理
     void fail();
-
 private:
 	Player* mPlayer;
     MotionStreak* streak;
     
 	std::list<Enemy*> enemyList;
 	std::list<cocos2d::Sprite*> itemList;
-	cocos2d::ui::Layout* uiLayout;
+    ui::Layout* uiLayout;
 
 	int enemyNum;
 	int gameCoin;
