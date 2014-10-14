@@ -18,18 +18,21 @@
 class Player;
 class Enemy;
 
+USING_NS_CC;
 
 class GameScene : public cocos2d::Layer
 {
 public:
-	// there's no 'id' in cpp, so we recommend returning the class instance pointer
 	static cocos2d::Scene* createScene(int stageId);
 
-	// Here's a difference. Method 'init' in cocos2d-x returns bool, instead of returning 'id' in cocos2d-iphone
 	virtual bool init();
 
 	void onEnter();
 	void onExit();
+    
+    bool onTouchBegan(Touch* touch, Event* event);
+    void onTouchMoved(Touch* touch, Event* event);
+    void onTouchEnded(Touch* touch, Event* event);
 
 	// a selector callback
 	void menuCloseCallback(cocos2d::Ref* pSender);
@@ -59,6 +62,8 @@ private:
 
 private:
 	Player* mPlayer;
+    MotionStreak* streak;
+    
 	std::list<Enemy*> enemyList;
 	std::list<cocos2d::Sprite*> itemList;
 	cocos2d::ui::Layout* uiLayout;
@@ -66,6 +71,7 @@ private:
 	int enemyNum;
 	int gameCoin;
     int stageId;
+    EventListenerTouchOneByOne* touchListener;
 };
 
 

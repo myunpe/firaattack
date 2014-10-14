@@ -115,6 +115,18 @@ bool GameScene::init()
     //
     itemList = std::list<Sprite*>();
     
+    auto s = Director::getInstance()->getWinSize();
+    streak = MotionStreak::create(2, 3, 32, Color3B::RED, "streak.png");
+    addChild(streak);
+    
+    touchListener = EventListenerTouchOneByOne::create();
+    
+    touchListener->onTouchBegan = CC_CALLBACK_2(GameScene::onTouchBegan, this);
+    touchListener->onTouchMoved = CC_CALLBACK_2(GameScene::onTouchMoved, this);
+    touchListener->onTouchEnded = CC_CALLBACK_2(GameScene::onTouchEnded, this);
+    
+    Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(touchListener, this);
+    
     return true;
 }
 
@@ -142,6 +154,7 @@ void GameScene::onEnter(){
 void GameScene::onExit(){
     log("GameScene:onExit");
 	Layer::onExit();
+    Director::getInstance()->getEventDispatcher()->removeEventListener(touchListener);
     enemyList.clear();
     itemList.clear();
 	this->removeAllChildrenWithCleanup(true);
@@ -241,6 +254,23 @@ void GameScene::menuCloseCallback(Ref* pSender)
     
 }
 
+bool GameScene::onTouchBegan(Touch* touch, Event* event){
+    log("onTouchBeganh");
+    mPlayer->onTouchBegan(touch, event);
+    streak->setPosition( touch->getLocation() );
+    return true;
+}
+void GameScene::onTouchMoved(Touch* touch, Event* event){
+    //    log("player onTouchMoved");
+    mPlayer->onTouchMoved(touch, event);
+    streak->setPosition( touch->getLocation() );
+
+}
+void GameScene::onTouchEnded(Touch* touch, Event* event){
+    mPlayer->onTouchEnded(touch, event);
+}
+
+
 void GameScene::onCollisionCheck(float detla){
     for (auto it = enemyList.begin(); it != enemyList.end();) {
         if((*it)->onCollideWithPlayer(mPlayer)){
@@ -268,7 +298,7 @@ void GameScene::readGameData(){
     doc.Parse<rapidjson::kParseDefaultFlags>(data.c_str());
 	rapidjson::Value &val = doc[stageId-1];
 	log( "name = %s, enemy = %d, stageId = %d", val["name"].GetString(), val["enemy"].Size(), stageId);
-	rapidjson::Value &enemyArray = val["enemy"];
+//	rapidjson::Value &enemyArray = val["enemy"];
 	this->enemyCreate(val["enemy"]);
     enemyNum = val["enemy"].Size();
 	mPlayer->setReflectMax(val["bounce"].GetInt());

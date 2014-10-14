@@ -108,6 +108,8 @@
 		8CC1064819A38935001ABC77 /* SelectStageScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CC1063919A38935001ABC77 /* SelectStageScene.cpp */; };
 		8CC1064919A38935001ABC77 /* TitleScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CC1063B19A38935001ABC77 /* TitleScene.cpp */; };
 		8CC1064A19A38935001ABC77 /* TitleScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8CC1063B19A38935001ABC77 /* TitleScene.cpp */; };
+		8CF3A71D19EC3CCF00CAC12D /* streak.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CF3A71C19EC3CCF00CAC12D /* streak.png */; };
+		8CF3A71E19EC3CCF00CAC12D /* streak.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CF3A71C19EC3CCF00CAC12D /* streak.png */; };
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
 		BF1712471292920000B8313A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB412928DE900B8313A /* libz.dylib */; };
 		BF1C47F01293687400B63C5D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF1C47EA1293683800B63C5D /* QuartzCore.framework */; };
@@ -335,6 +337,7 @@
 		8CC1063A19A38935001ABC77 /* SelectStageScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SelectStageScene.h; path = ../Classes/SelectStageScene.h; sourceTree = "<group>"; };
 		8CC1063B19A38935001ABC77 /* TitleScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TitleScene.cpp; path = ../Classes/TitleScene.cpp; sourceTree = "<group>"; };
 		8CC1063C19A38935001ABC77 /* TitleScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TitleScene.h; path = ../Classes/TitleScene.h; sourceTree = "<group>"; };
+		8CF3A71C19EC3CCF00CAC12D /* streak.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = streak.png; sourceTree = "<group>"; };
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB412928DE900B8313A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		BF1C47EA1293683800B63C5D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -542,6 +545,7 @@
 		78C7DDAA14EBA5050085D0C2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				8CF3A71C19EC3CCF00CAC12D /* streak.png */,
 				8CC105E319A38919001ABC77 /* .DS_Store */,
 				8CC105E419A38919001ABC77 /* clear.png */,
 				8CC105E519A38919001ABC77 /* clearicon.png */,
@@ -745,6 +749,7 @@
 				8CC1060D19A38919001ABC77 /* failed.png in Resources */,
 				5087E78617EB970100C73F5D /* Icon-76.png in Resources */,
 				8CC1061319A38919001ABC77 /* GameScene.json in Resources */,
+				8CF3A71D19EC3CCF00CAC12D /* streak.png in Resources */,
 				8CC1062B19A38919001ABC77 /* UIGame.ExportJson in Resources */,
 				8CC1061119A38919001ABC77 /* Marker Felt.ttf in Resources */,
 				8CC1061719A38919001ABC77 /* makejson.php in Resources */,
@@ -787,6 +792,7 @@
 				5087E75317EB910900C73F5D /* CloseNormal.png in Resources */,
 				8CC1060C19A38919001ABC77 /* enemy.png in Resources */,
 				8CC1060419A38919001ABC77 /* CloseNormal.png in Resources */,
+				8CF3A71E19EC3CCF00CAC12D /* streak.png in Resources */,
 				8CC1061219A38919001ABC77 /* Marker Felt.ttf in Resources */,
 				8CC105FE19A38919001ABC77 /* .DS_Store in Resources */,
 				8CC1060219A38919001ABC77 /* clearicon.png in Resources */,

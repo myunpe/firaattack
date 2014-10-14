@@ -40,34 +40,36 @@ void Player::onEnter(){
     log("Player::onEnter");
     Sprite::onEnter();
     
+    auto s = Director::getInstance()->getWinSize();
+    
+    // create the streak object and add it to the scene
+    
+//    streak->runAction(colorAction);
+
+    
     //touchListener->setSwallowTouches(true);
-    touchListener = EventListenerTouchOneByOne::create();
     
-    touchListener->onTouchBegan = CC_CALLBACK_2(Player::onTouchBegan, this);
-    touchListener->onTouchMoved = CC_CALLBACK_2(Player::onTouchMoved, this);
-    touchListener->onTouchEnded = CC_CALLBACK_2(Player::onTouchEnded, this);
-    
-    Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(touchListener, this);
 }
 
 void Player::onExit(){
     Sprite::onExit();
-    Director::getInstance()->getEventDispatcher()->removeEventListener(touchListener);
 }
 
 
 bool Player::onTouchBegan(Touch* touch, Event* event){
-    log("player onTouchbegan");
+    log("player onTouchbegan %f, %f", touch->getLocation().x, touch->getLocation().y);
     if (!isUserAct || power > 0.0f) { //移動中はタッチとれないようにしてみた
         return false;
     }
     reflectCount = 0;
     unschedule(schedule_selector(Player::move));
     beginTouch = touch->getLocation();
+    
     return true;
 }
 void Player::onTouchMoved(Touch* touch, Event* event){
 //    log("player onTouchMoved");
+    
 }
 void Player::onTouchEnded(Touch* touch, Event* event){
     Vec2 endTouch = touch->getLocation();
