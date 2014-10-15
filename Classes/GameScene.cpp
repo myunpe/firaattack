@@ -167,11 +167,7 @@ void GameScene::onPlayerMoveEnd(){
 void GameScene::coinRemove(Node* sprite){
 	addScore(15);
 	removeChild(sprite);
-    
-    if (itemList.empty()) {
-        mPlayer->isUserAct = true;
-    }
-    
+        
     if (enemyList.empty() && itemList.empty()) {
         //数が0になった場合はゲームクリア
         //クリア保存
